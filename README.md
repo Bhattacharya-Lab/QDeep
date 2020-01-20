@@ -19,7 +19,6 @@
   * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
-* [Contact](#contact)
 * [Acknowledgements](#acknowledgements)
 
 ## Getting Started
