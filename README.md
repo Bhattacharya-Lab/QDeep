@@ -93,6 +93,9 @@ $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --al
 $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln 
 --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --msa yes --gpu 0 --out T0865
 ```
+<br/><br/>
+A detailed explanation of each of the options are provided below
+
 
 <!-- LICENSE -->
 ## License
