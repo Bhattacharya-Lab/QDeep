@@ -50,7 +50,7 @@ To run QDeep, type
 ```sh
 $ python QDeep.py
 ```
-**********************************************************************
+<br/>**********************************************************************<br/>
 *                            QDeep                                   *
 *        Protein sinlge-model quality assessment using ResNet        *
 *       For comments, please email to bhattacharyad@auburn.edu       *
