@@ -51,33 +51,29 @@ To run QDeep, type
 $ python QDeep.py
 ```
 <br/>
-<p>
-  <p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">**********************************************************************</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">* &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;QDeep &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; *</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">* &nbsp; &nbsp; &nbsp; &nbsp;Protein sinlge-model quality assessment using ResNet &nbsp; &nbsp; &nbsp; &nbsp;*</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">* &nbsp; &nbsp; &nbsp; For comments, please email to bhattacharyad@auburn.edu &nbsp; &nbsp; &nbsp; *</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">**********************************************************************</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">usage: QDeep.py [-h] [--tar TARGET_NAME] [--fas FASTA_FILE] [--dec DECOY_DIR]</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [--aln ALN_FILE] [--dist DISTANCE_FILE] [--pssm PSSM_FILE]</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [--spd SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [--out OUTPUT_PATH]</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255); min-height: 13px;">
-  <br>
-</p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">optional arguments:</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; -h, --help &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;show this help message and exit</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --tar TARGET_NAME &nbsp; &nbsp; Target name</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --fas FASTA_FILE &nbsp; &nbsp; &nbsp;Fasta file</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --dec DECOY_DIR &nbsp; &nbsp; &nbsp; Decoy directory</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --aln ALN_FILE &nbsp; &nbsp; &nbsp; &nbsp;Multiple Sequence Alignment</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --dist DISTANCE_FILE &nbsp;DMPfold predicted distance</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --pssm PSSM_FILE &nbsp; &nbsp; &nbsp;PSSM file</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --spd SPD33_FILE &nbsp; &nbsp; &nbsp;SPIDER3 output (.spd3)</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --msa YES &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; yes|no Whether to use deep MSA (default: no)</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --gpu DEVICE_ID &nbsp; &nbsp; &nbsp; device id (0/1/2/3/4/..) Whether to run on GPU</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (default: CPU)</span></p>
-<p style="margin: 0px; font-stretch: normal; font-size: 11px; line-height: normal; font-family: Menlo; background-color: rgb(255, 255, 255);"><span style="font-variant-ligatures: no-common-ligatures;">&nbsp; --out OUTPUT_PATH &nbsp; &nbsp; output directory name</span></p>
-  </p>
+**********************************************************************
+*                            QDeep                                   *
+*        Protein sinlge-model quality assessment using ResNet        *
+*       For comments, please email to bhattacharyad@auburn.edu       *
+**********************************************************************
+usage: QDeep.py [-h] [--tar TARGET_NAME] [--fas FASTA_FILE] [--dec DECOY_DIR]
+                [--aln ALN_FILE] [--dist DISTANCE_FILE] [--pssm PSSM_FILE]
+                [--spd SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]
+                [--out OUTPUT_PATH]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tar TARGET_NAME     Target name
+  --fas FASTA_FILE      Fasta file
+  --dec DECOY_DIR       Decoy directory
+  --aln ALN_FILE        Multiple Sequence Alignment
+  --dist DISTANCE_FILE  DMPfold predicted distance
+  --pssm PSSM_FILE      PSSM file
+  --spd SPD33_FILE      SPIDER3 output (.spd3)
+  --msa YES             yes|no Whether to use deep MSA (default: no)
+  --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU
+                        (default: CPU)
+  --out OUTPUT_PATH     output directory name
 
 
 
