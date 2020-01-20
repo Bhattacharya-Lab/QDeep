@@ -50,7 +50,7 @@ To run QDeep, type
 ```sh
 $ python QDeep.py
 ```
-<br/>
+```
 **********************************************************************
 *                            QDeep                                   *
 *        Protein sinlge-model quality assessment using ResNet        *
@@ -74,7 +74,7 @@ optional arguments:
   --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU
                         (default: CPU)
   --out OUTPUT_PATH     output directory name
-
+```
 
 
 <!-- LICENSE -->
