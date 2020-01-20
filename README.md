@@ -10,7 +10,6 @@
   Debswapna Bhattacharya (bhattacharyad@auburn.edu)<br/>
   Last updated: 1/20/2020</p><br/>
 </p>
-<br />
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -23,7 +22,10 @@
 
 ## Getting Started
 
-You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep web server</a> to score a single protein model at a time. But if you need to evaluate a pool of models at a time, we strongly recommend that you download and run the tool locally on the Linux system using the following procedures. 
+You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep web server</a> to score a single protein model at a time. But if you need to evaluate a pool of models at a time, we strongly recommend that you download and run the tool locally on the Linux system using the following procedures. Download QDeep,
+```
+$git clone 
+```
 
 ### Prerequisites
 
