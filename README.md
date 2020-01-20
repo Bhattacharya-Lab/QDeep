@@ -16,6 +16,7 @@
 ## Table of Contents
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
+  * [Dependencies](#dependencies)
   * [Installation](#installation)
 * [Usage](#usage)
 * [License](#license)
@@ -33,6 +34,8 @@ You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep
 3. tensorflow==1.13.1 <br/>
 4. keras==2.3.1 <br/>
 5. Pyrosetta Python-3.6.Release: pyrosetta-2019.45+release or newer (http://www.pyrosetta.org/dow) <br/>
+
+### Dependencies
 
 ### Installation
 1. If you don't have python version 3.6, you can download from <a href="https://www.python.org/downloads/release/python-360/">https://www.python.org/downloads/release/python-360/</a> and install.
@@ -114,10 +117,6 @@ A detailed explanation for each of the options are provided below<br/>
 ## License
 
 Distributed under the Apache 2.0 License. See `LICENSE` for more information.
-
-
-<!-- CONTACT -->
-## Contact
 
 
 <!-- ACKNOWLEDGEMENTS -->
