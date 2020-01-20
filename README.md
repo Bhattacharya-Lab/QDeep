@@ -95,6 +95,11 @@ $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --al
 ```
 <br/>
 A detailed explanation for each of the options are provided below<br/>
+###Example
+* Item 1
+* Item 2
+  * Sub Item 1
+  * Sub Item 2
 * --tar Target name: This should not have any extension and a directory will be created with this name, if one does not exist already.<br/>
 * --fas Fasta file: This should contain the sequence with and without the header. The sequence may also expands to multiple lines in the fasta file<br/>
 * --dec Decoy directory: This requires a directory containing all the pdb models with .pdb extension. Please note that, even if you score one pdb model, that should go in a directory to be passed.<br/>
