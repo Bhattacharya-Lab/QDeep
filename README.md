@@ -24,7 +24,7 @@
 
 You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep web server</a> to score a single protein model at a time. But if you need to evaluate a pool of models at a time, we strongly recommend that you download and run the tool locally on the Linux system using the following procedures. Download QDeep,
 ```
-$git clone 
+$git clone https://github.com/Bhattacharya-Lab/QDeep.git
 ```
 
 ### Prerequisites
@@ -49,6 +49,7 @@ $ python configure.py
 ## Usage
 To run QDeep, type
 ```sh
+$ cd QDeep
 $ python QDeep.py
 ```
 You will see the following output
