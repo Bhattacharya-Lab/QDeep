@@ -16,8 +16,8 @@
 ## Table of Contents
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
-  * [Dependencies](#dependencies)
   * [Installation](#installation)
+  * [Modules](#modules)
 * [Usage](#usage)
 * [License](#license)
 * [Contact](#contact)
@@ -35,8 +35,6 @@ You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep
 4. keras==2.3.1 <br/>
 5. Pyrosetta Python-3.6.Release: pyrosetta-2019.45+release or newer (http://www.pyrosetta.org/dow) <br/>
 
-### Dependencies
-
 ### Installation
 1. If you don't have python version 3.6, you can download from <a href="https://www.python.org/downloads/release/python-360/">https://www.python.org/downloads/release/python-360/</a> and install.
 2. If you don't have "tensorflow" package, install it by typing ```sh pip install tensorflow==1.13.1```
@@ -46,6 +44,12 @@ You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep
 ```sh
 $ python configure.py
 ```
+
+### Modules
+These modules are provided with the tool and no additional installation is required. These modules can be found in the module directory
+1. aleigen: used for calculating optimal alignment score between the predicted and observed interaction maps. This tool is extracted from http://bioinformatics.cs.unibo.it/Al-Eigen
+2. calNf_ly: used to calculate number of effective sequence from the alignment file. This tool is extracted from https://github.com/leeyang/ResPRE
+3. dssp: used to calculate observed secondary structure and solven accessibility. This tool is extracted from http://melolab.org/supmat/moma/install.html
 
 <!--- USAGE---->
 ## Usage
