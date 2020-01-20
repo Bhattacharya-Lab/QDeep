@@ -93,9 +93,13 @@ $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --al
 $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln 
 --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --msa yes --gpu 0 --out T0865
 ```
-<br/><br/>
-A detailed explanation of each of the options are provided below
-
+<br/>
+A detailed explanation for each of the options are provided below
+* --tar Target name: This should not have any extension and a directory will be created with this name, if one does not exist already.
+* --fas Fasta file: This should contain the sequence with and without the header. The sequence may also expands to multiple lines in the fasta file
+* --dec Decoy directory: This requires a directory containing all the pdb models with .pdb extension. Please note that, even if you score one pdb model, that should go in a directory to be passed.
+* --aln Multiple Sequence Alignment file: The alignment file should be generated using HHblits with a query sequence coverage of 10% and pairwise sequence identity of 90% against uniclust30_2018_08 by three iterations with an E-value inclusion threshold of 10-3. You can download HHblits from https://github.com/soedinglab/hh-suite.
+* --dist DMPfold predicted distance: To predict distance using DMPfold, you can download DMPfold from https://github.com/psipred/DMPfold 
 
 <!-- LICENSE -->
 ## License
