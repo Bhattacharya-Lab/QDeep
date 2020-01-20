@@ -76,7 +76,7 @@ optional arguments:
                         (default: CPU)
   --out OUTPUT_PATH     output directory name
 ```
-<b>Example commands to run QDeep</b><br/>
+<b>Example commands to run QDeep</b><br/><br/>
 QDeep can be run with both shallow and deep MSA.</br>
 * To run QDeep with shallow MSA, type
 ```
