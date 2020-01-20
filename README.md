@@ -114,11 +114,6 @@ A detailed explanation for each of the options are provided below<br/>
 
 Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 
-
-<!-- CONTACT -->
-## Contact
-
-
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * Alabama Supercomputer Authority
