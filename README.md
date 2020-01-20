@@ -50,6 +50,7 @@ To run QDeep, type
 ```sh
 $ python QDeep.py
 ```
+You will see the following output
 ```
 **********************************************************************
 *                            QDeep                                   *
@@ -99,11 +100,8 @@ $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --al
 Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 
 
-
 <!-- CONTACT -->
 ## Contact
-
-
 
 
 <!-- ACKNOWLEDGEMENTS -->
