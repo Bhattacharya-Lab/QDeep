@@ -17,7 +17,6 @@
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-  * [Modules](#modules)
 * [Usage](#usage)
 * [License](#license)
 * [Contact](#contact)
@@ -25,10 +24,7 @@
 
 ## Getting Started
 
-You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep web server</a> to score a single protein model at a time. But if you need to evaluate a pool of models at a time, we strongly recommend that you download and run the tool locally on the Linux system using the following procedures. Download QDeep,
-```
-$ git clone https://github.com/Bhattacharya-Lab/QDeep.git
-```
+You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep web server</a> to score a single protein model at a time. But if you need to evaluate a pool of models at a time, we strongly recommend that you download and run the tool locally on the Linux system using the following procedures. 
 
 ### Prerequisites
 
@@ -45,15 +41,8 @@ $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 4. If you don't have Pyrosetta installed, please download from <a href="http://www.pyrosetta.org/dow">http://www.pyrosetta.org/dow</a> and install. If it requires license, you can obtain the license from <a href="https://els.comotion.uw.edu/licenses/88">https://els.comotion.uw.edu/licenses/88</a>. You will receive an email with Username and Password.
 5. Go to the directory where you download QDeep and configure by typing
 ```sh
-$ cd QDeep
 $ python configure.py
 ```
-
-### Modules
-These modules are provided with the tool and no additional installation is required. These modules can be found in the module directory
-1. aleigen: used for calculating optimal alignment score between the predicted and observed interaction maps. This tool is extracted from http://bioinformatics.cs.unibo.it/Al-Eigen
-2. calNf_ly: used to calculate number of effective sequence from the alignment file. This tool is extracted from https://github.com/leeyang/ResPRE
-3. dssp: used to calculate observed secondary structure and solven accessibility. This tool is extracted from http://melolab.org/supmat/moma/install.html
 
 <!--- USAGE---->
 ## Usage
@@ -127,6 +116,11 @@ A detailed explanation for each of the options are provided below<br/>
 Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 
 
+<!-- CONTACT -->
+## Contact
+
+
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
+* Alabama Supercomputer Authority
 
