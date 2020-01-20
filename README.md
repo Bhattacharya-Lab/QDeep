@@ -52,28 +52,28 @@ $ python QDeep.py
 ```
 <br/>
 <p>**********************************************************************<br/>
-*                            QDeep                                   *
-*        Protein sinlge-model quality assessment using ResNet        *
-*       For comments, please email to bhattacharyad@auburn.edu       *
-**********************************************************************
-usage: QDeep.py [-h] [--tar TARGET_NAME] [--fas FASTA_FILE] [--dec DECOY_DIR]
-                [--aln ALN_FILE] [--dist DISTANCE_FILE] [--pssm PSSM_FILE]
-                [--spd SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]
-                [--out OUTPUT_PATH]
+*                            QDeep                                   *<br/>
+*        Protein sinlge-model quality assessment using ResNet        *<br/>
+*       For comments, please email to bhattacharyad@auburn.edu       *<br/>
+**********************************************************************<br/>
+usage: QDeep.py [-h] [--tar TARGET_NAME] [--fas FASTA_FILE] [--dec DECOY_DIR]<br/>
+                [--aln ALN_FILE] [--dist DISTANCE_FILE] [--pssm PSSM_FILE]<br/>
+                [--spd SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]<br/>
+                [--out OUTPUT_PATH]<br/>
 
-optional arguments:
-  -h, --help            show this help message and exit
-  --tar TARGET_NAME     Target name
-  --fas FASTA_FILE      Fasta file
-  --dec DECOY_DIR       Decoy directory
-  --aln ALN_FILE        Multiple Sequence Alignment
-  --dist DISTANCE_FILE  DMPfold predicted distance
-  --pssm PSSM_FILE      PSSM file
-  --spd SPD33_FILE      SPIDER3 output (.spd3)
-  --msa YES             yes|no Whether to use deep MSA (default: no)
-  --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU
-                        (default: CPU)
-  --out OUTPUT_PATH     output directory name
+optional arguments:<br/>
+  -h, --help            show this help message and exit<br/>
+  --tar TARGET_NAME     Target name<br/>
+  --fas FASTA_FILE      Fasta file<br/>
+  --dec DECOY_DIR       Decoy directory<br/>
+  --aln ALN_FILE        Multiple Sequence Alignment<br/>
+  --dist DISTANCE_FILE  DMPfold predicted distance<br/>
+  --pssm PSSM_FILE      PSSM file<br/>
+  --spd SPD33_FILE      SPIDER3 output (.spd3)<br/>
+  --msa YES             yes|no Whether to use deep MSA (default: no)<br/>
+  --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU<br/>
+                        (default: CPU)<br/>
+  --out OUTPUT_PATH     output directory name<br/>
   </p>
 
 
