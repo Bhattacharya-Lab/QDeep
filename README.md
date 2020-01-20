@@ -75,7 +75,10 @@ optional arguments:
                         (default: CPU)
   --out OUTPUT_PATH     output directory name
 ```
-
+Example commands to run QDeep
+```
+$ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --out T0865
+```
 
 <!-- LICENSE -->
 ## License
