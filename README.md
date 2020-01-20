@@ -50,6 +50,29 @@ To run QDeep, type
 ```sh
 $ python QDeep.py
 ```
+**********************************************************************
+*                            QDeep                                   *
+*        Protein sinlge-model quality assessment using ResNet        *
+*       For comments, please email to bhattacharyad@auburn.edu       *
+**********************************************************************
+usage: QDeep.py [-h] [--tar TARGET_NAME] [--fas FASTA_FILE] [--dec DECOY_DIR]
+                [--aln ALN_FILE] [--dist DISTANCE_FILE] [--pssm PSSM_FILE]
+                [--spd SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]
+                [--out OUTPUT_PATH]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --tar TARGET_NAME     Target name
+  --fas FASTA_FILE      Fasta file
+  --dec DECOY_DIR       Decoy directory
+  --aln ALN_FILE        Multiple Sequence Alignment
+  --dist DISTANCE_FILE  DMPfold predicted distance
+  --pssm PSSM_FILE      PSSM file
+  --spd SPD33_FILE      SPIDER3 output (.spd3)
+  --msa YES             yes|no Whether to use deep MSA (default: no)
+  --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU
+                        (default: CPU)
+  --out OUTPUT_PATH     output directory name
 
 
 
