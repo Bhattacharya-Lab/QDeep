@@ -46,6 +46,10 @@ $ python configure.py
 
 <!--- USAGE---->
 ## Usage
+To run QDeep, type
+```sh
+$ python QDeep.py
+```
 
 
 
