@@ -45,6 +45,7 @@ $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 4. If you don't have Pyrosetta installed, please download from <a href="http://www.pyrosetta.org/dow">http://www.pyrosetta.org/dow</a> and install. If it requires license, you can obtain the license from <a href="https://els.comotion.uw.edu/licenses/88">https://els.comotion.uw.edu/licenses/88</a>. You will receive an email with Username and Password.
 5. Go to the directory where you download QDeep and configure by typing
 ```sh
+$ cd QDeep
 $ python configure.py
 ```
 
