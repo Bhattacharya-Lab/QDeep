@@ -31,9 +31,9 @@ $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 
 1. QDeep is tested on x86_64 redhat linux system. Currently, QDeep is not supported on Windows or Mac
 2. python==3.6 <br/>
-3. tensorflow==1.13.1 <br/>
-4. keras==2.3.1 <br/>
-5. numpy==1.14.5 <br/>
+3. tensorflow==1.13.1 or newer <br/>
+4. keras==2.3.1 or newer <br/>
+5. numpy==1.14.5 or newer <br/>
 6. Pyrosetta Python-3.6.Release: pyrosetta-2019.45+release or newer (http://www.pyrosetta.org/dow) <br/>
 
 ### Installation
