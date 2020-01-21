@@ -28,7 +28,7 @@ print('**********************************************************************')
 #--------------change the following path(s) here----------------#
 #Change to the dir where the QDeep is downloaded                #
 #---------------------------------------------------------------#
-qDeep_path = 'change/to/your/current/directory'
+qDeep_path = '/home/project/scoreDml/resNet/new_version/multiple_thresholds/tools/app/'
 
 #------------------------arguments------------------------------#
 #Shows help to the users                                        #
@@ -465,7 +465,7 @@ class QDeep():
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_6.rr')):
                     os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_6.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
-                #step3: format the predicted contact
+                #step3: format the predicted interaction map
                 lines_pred = []
                 with open(self.target_name + '_6.rr') as pCon:
                     for line in pCon:
@@ -485,14 +485,14 @@ class QDeep():
                 out_file.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
                     temp_l = lines_pred[l].split()
-                    #--------change contact threshold here----------#
+                    #--------change int. map threshold here---------#
                     #                                               #
                     #-----------------------------------------------#
                     if(float(temp_l[2]) > 0.2):
                         out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 out_file.close()
 
-                #step1: calculate contacts from the pdbs#
+                #step1: calculate int. map from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
                         os.chdir(working_path)
@@ -522,14 +522,14 @@ class QDeep():
                                 + self.target_name + '_6.rr 6 &>' + decoys[d].split('.')[0] + '_6.cmo')
                 os.chdir(working_path)
 
-                #--------for 8A contact---------#
+                #--------for 8A int. map--------#
                 #                               #
                 #-------------------------------#
-                #copy the predicted contact
+                #copy the predicted int.map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_8.rr')):
                     os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_8.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
-                #step3: format the predicted contact
+                #step3: format the predicted int. map
                 lines_pred = []
                 with open(self.target_name + '_8.rr') as pCon:
                     for line in pCon:
@@ -549,14 +549,14 @@ class QDeep():
                 outFile.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
                     temp_l = lines_pred[l].split()
-                    #--------change contact threshold here----------#
-                    #						#
+                    #--------change int. map threshold here---------#
+                    #						    #
                     #-----------------------------------------------#
                     if(float(temp_l[2]) > 0.2):
                         outFile.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 outFile.close()
 
-                #step1: calculate contacts from the pdbs#
+                #step1: calculate int. map from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
                     os.chdir(working_path)
@@ -585,14 +585,14 @@ class QDeep():
                           + self.target_name + '_8.rr 6 &>' + decoys[d].split('.')[0] + '_8.cmo')
                 os.chdir(working_path)
 
-                #--------for 10A contact---------#
+                #--------for 10A int. map--------#
                 #                                #
                 #--------------------------------#
-                #copy the predicted contact
+                #copy the predicted int. map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_10.rr')):
                     os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_10.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
-                #step3: format the predicted contact
+                #step3: format the predicted int. map
                 lines_pred = []
                 with open(self.target_name + '_10.rr') as p_con:
                     for line in p_con:
@@ -612,14 +612,14 @@ class QDeep():
                 out_file.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
                     temp_l = lines_pred[l].split()
-                    #--------change contact threshold here----------#
-                    #						#
+                    #--------change int. map threshold here---------#
+                    #					            #
                     #-----------------------------------------------#
                     if(float(temp_l[2]) > 0.2):
                         out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 out_file.close()
 
-                #step1: calculate contacts from the pdbs#
+                #step1: calculate int. map from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
                     os.chdir(working_path)
@@ -649,14 +649,14 @@ class QDeep():
                           + self.target_name + '_10.rr 6 &>' + decoys[d].split('.')[0] + '_10.cmo')
 
                 os.chdir(working_path)
-                #--------for 12A contact---------#
+                #--------for 12A int. map--------#
                 #                                #
                 #--------------------------------#
-                #copy the predicted contact
+                #copy the predicted int. map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_12.rr')):
                     os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_12.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
-                #step3: format the predicted contact
+                #step3: format the predicted int. map
                 lines_pred = []
                 with open(self.target_name + '_12.rr') as p_con:
                     for line in p_con:
@@ -676,14 +676,14 @@ class QDeep():
                 out_file.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
                     temp_l = lines_pred[l].split()
-                    #--------change contact threshold here----------#
+                    #--------change int. map threshold here---------#
                     #						    #
                     #-----------------------------------------------#
                     if(float(temp_l[2]) > 0.2):
                         out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 out_file.close()
 
-                #step1: calculate contacts from the pdbs#
+                #step1: calculate int. maps from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
                     os.chdir(working_path)
@@ -715,10 +715,10 @@ class QDeep():
 
                 os.chdir(working_path)
 
-                #--------for 14A contact---------#
+                #--------for 14A int. map--------#
                 #                                #
                 #--------------------------------#
-                #copy the predicted contact
+                #copy the predicted int. map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_14.rr')):
                     os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_14.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
