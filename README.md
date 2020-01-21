@@ -73,7 +73,7 @@ optional arguments:
   --aln ALN_FILE        Multiple Sequence Alignment
   --dist DISTANCE_FILE  DMPfold predicted distance
   --pssm PSSM_FILE      PSSM file
-  --spd SPD33_FILE      SPIDER3 output (.spd3)
+  --spd SPD33_FILE      SPIDER3 output (.spd33)
   --msa YES             yes|no Whether to use deep MSA (default: no)
   --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU
                         (default: CPU)
