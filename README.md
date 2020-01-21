@@ -119,7 +119,7 @@ A detailed explanation for each of the options are provided below<br/>
 <!-- LICENSE -->
 ## License
 
-Distributed under the GPL 3.0 License. See `LICENSE` for more information.
+Distributed under the GPL 3.0 License. See <a href="https://github.com/Bhattacharya-Lab/QDeep/blob/master/LICENSE">`LICENSE`</a> for more information.
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
