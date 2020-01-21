@@ -9,6 +9,7 @@
 #######################################################################################################
 import os, sys, math
 import argparse, subprocess
+import numpy as np
 from tensorflow.keras.models import model_from_json
 
 #----------------------global variables-------------------------#
@@ -401,7 +402,7 @@ class QDeep():
                         os.makedirs(output_path + "/rosetta")
                     
                 ros_proc = subprocess.Popen('python -W ignore ' + ros_script + ' -d ' + decoy_dir +
-                                  ' -o ' + output_path + "/rosetta > rosetta.log", shell=True).wait()
+                                  ' -o ' + output_path + "/rosetta > " + output_path + "/rosetta.log", shell=True).wait()
                 if(ros_proc != 0):
                     print('Error occured while generating rosetta energy.\n' +
                               'Please check the installation')
