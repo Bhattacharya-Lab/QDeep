@@ -108,7 +108,7 @@ A detailed explanation for each of the options are provided below<br/>
 * --dist DMPfold predicted distance: To predict distance using DMPfold, you can download DMPfold from https://github.com/psipred/DMPfold<br/>
 * --pssm PSSM file: You can generate the sequence profile by searching the NR database using PSI-BLAST. You can download the PSI-BLAST from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/<br/>
 * --spd SPIDER3 output: The secondary structure and the solvent accessibility should be predicted using SPIDER3. SPIDER3 can be downloaded from https://sparks-lab.org/downloads/
-* --msa yes|no: This is optional. You should use this flag if you want to use DeepMSA generated MSA. When you use DeepMSA generated MSA, please make sure to, 
+* --msa yes|no: This is optional. You should use this flag if you want to use DeepMSA generated MSA. You can download DeepMSA from https://zhanglab.ccmb.med.umich.edu/DeepMSA/. When you use DeepMSA generated MSA, please make sure to, 
   * generate sequene profile(PSSM) using deep MSA
   * run SPIDER3 using deep MSA to predict secondary strcture and solvent accessibility 
   * predict distance using DMPfold using deep MSA
