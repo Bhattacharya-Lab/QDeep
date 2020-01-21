@@ -83,16 +83,19 @@ optional arguments:
 QDeep can be run with both shallow and deep MSA.</br>
 * To run QDeep with shallow MSA, type
 ```
+$ cd QDeep
 $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln 
 --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --out T0865
 ```
 * To run QDeep with deep MSA, type
 ```
+$ cd QDeep
 $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln 
 --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --msa yes --out T0865
 ```
 * For running QDeep, GPU is not required. However GPU may faster the prediction. To run QDeep with GPU, type
 ```
+$ cd QDeep
 $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln 
 --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --msa yes --gpu 0 --out T0865
 ```
