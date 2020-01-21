@@ -119,7 +119,7 @@ A detailed explanation for each of the options are provided below<br/>
 <!-- LICENSE -->
 ## License
 
-Distributed under the Apache 2.0 License. See `LICENSE` for more information.
+Distributed under the GPL 3.0 License. See `LICENSE` for more information.
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
