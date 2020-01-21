@@ -33,12 +33,14 @@ $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 2. python==3.6 <br/>
 3. tensorflow==1.13.1 <br/>
 4. keras==2.3.1 <br/>
-5. Pyrosetta Python-3.6.Release: pyrosetta-2019.45+release or newer (http://www.pyrosetta.org/dow) <br/>
+5. numpy==1.14.5 <br/>
+6. Pyrosetta Python-3.6.Release: pyrosetta-2019.45+release or newer (http://www.pyrosetta.org/dow) <br/>
 
 ### Installation
 1. If you don't have python version 3.6, you can download from <a href="https://www.python.org/downloads/release/python-360/">https://www.python.org/downloads/release/python-360/</a> and install.
 2. If you don't have "tensorflow" package, install it by typing ```$ pip install tensorflow==1.13.1```
 3. If you don't have "keras" package, install it by typing ```$ pip install keras==2.3.1```
+3. If you don't have "keras" package, install it by typing ```$ pip install numpy==1.14.5```
 4. If you don't have Pyrosetta installed, please download from <a href="http://www.pyrosetta.org/dow">http://www.pyrosetta.org/dow</a> and install. If it requires license, you can obtain the license from <a href="https://els.comotion.uw.edu/licenses/88">https://els.comotion.uw.edu/licenses/88</a>. You will receive an email with Username and Password.
 5. Go to the directory where you download QDeep and configure by typing
 ```
