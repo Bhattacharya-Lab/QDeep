@@ -28,7 +28,7 @@ print('**********************************************************************')
 #--------------change the following path(s) here----------------#
 #Change to the dir where the QDeep is downloaded                #
 #---------------------------------------------------------------#
-qDeep_path = '/home/project/scoreDml/resNet/new_version/multiple_thresholds/tools/app/'
+qDeep_path = 'change/to/your/current/directory'
 
 #------------------------arguments------------------------------#
 #Shows help to the users                                        #
