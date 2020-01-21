@@ -41,7 +41,7 @@ $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 2. If you don't have "tensorflow" package, install it by typing ```$ pip install tensorflow```
 3. If you don't have "keras" package, install it by typing ```$ pip install keras```
 3. If you don't have "numpy" package, install it by typing ```$ pip install numpy```
-4. If you don't have Pyrosetta installed, please download from <a href="http://www.pyrosetta.org/dow">http://www.pyrosetta.org/dow</a> and install. If it requires license, you can obtain the license from <a href="https://els.comotion.uw.edu/licenses/88">https://els.comotion.uw.edu/licenses/88</a>. You will receive an email with Username and Password. After you download and unzip, please use following commands to install<br\>
+4. If you don't have Pyrosetta installed, please download from <a href="http://www.pyrosetta.org/dow">http://www.pyrosetta.org/dow</a> and install. If it requires license, you can obtain the license from <a href="https://els.comotion.uw.edu/licenses/88">https://els.comotion.uw.edu/licenses/88</a>. You will receive an email with Username and Password. After you download and unzip, please use following commands to install
 ```
 $ cd setup
 $ python setup.py install
