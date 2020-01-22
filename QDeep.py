@@ -125,7 +125,7 @@ if(deep_msa == 'yes'):
 	model_4_0_weight = qDeep_path + '/models/deep_aln/4.0/weights_on_parameter_1.h5'
 	model_8_0_weight = qDeep_path + '/models/deep_aln/8.0/weights_on_parameter_1.h5'
 
-#------------------------set GPU device-------------------------#     
+#------------------------sets GPU device------------------------#     
 #                                                               #
 #---------------------------------------------------------------#
 if(gpu != ""):
