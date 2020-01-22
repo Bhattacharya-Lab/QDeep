@@ -1,5 +1,4 @@
 <!-- TITLE -->
-<br />
 <p align="center">
 <h1 align = "center">QDeep</h2>
   </a>
