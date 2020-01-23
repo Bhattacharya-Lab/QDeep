@@ -90,7 +90,7 @@ QDeep can be run with both shallow and deep MSA.</br>
 $ cd QDeep
 $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --out T0865
 ```
-   Pleae check the <a href="https://github.com/Bhattacharya-Lab/QDeep/blob/master/run.log">log</a> to match with your output.
+   Pleae check the <a href="https://github.com/Bhattacharya-Lab/QDeep/blob/master/run.log">log</a> to match with your output for the above command.
 * To run QDeep with deep MSA, type
 ```
 $ cd QDeep
