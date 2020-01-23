@@ -29,21 +29,12 @@ print('**********************************************************************')
 #------------------------configure------------------------------#
 #Configures before the first use                                #
 #---------------------------------------------------------------#
-qDeep_path = 'change/to/your/current/directory'
-#------------------------DO NOT change--------------------------#
-#                                                               #
-#---------------------------------------------------------------#
-dssp_path = qDeep_path + '/modules/dssp'
-aleigen_path = qDeep_path + '/modules/aleigen'
-neff_path = qDeep_path + '/modules/calNf_ly'
-pdb2rr_path = qDeep_path + '/modules/pdb2rr.pl'
-ros_script = qDeep_path + '/modules/ros_energy.py'
 
 configured = 1
-if(configured == 0 or not os.path.exists(dssp_path) or not os.path.exists(aleigen_path) or 
-	not os.path.exists(neff_path) or not os.path.exists(pdb2rr_path) or not os.path.exists(ros_script)):
-        print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ cd python configure.py\n")
-        exit(1)
+if(configured == 0):
+	print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ cd python configure.py\n")
+	exit(1)
+qDeep_path = '/home/project/scoreDml/resNet/new_version/multiple_thresholds/tools/app/'
 
 #------------------------arguments------------------------------#
 #Shows help to the users                                        #
@@ -140,6 +131,15 @@ if(deep_msa == 'yes'):
 #---------------------------------------------------------------#
 if(gpu != ""):
 	os.environ["CUDA_VISIBLE_DEVICES"] = gpu
+
+#------------------------DO NOT change--------------------------#
+#                                                               #
+#---------------------------------------------------------------#
+dssp_path = qDeep_path + '/modules/dssp'
+aleigen_path = qDeep_path + '/modules/aleigen'
+neff_path = qDeep_path + '/modules/calNf_ly'
+pdb2rr_path = qDeep_path + '/modules/pdb2rr.pl'
+ros_script = qDeep_path + '/modules/ros_energy.py'
 
 class QDeep():
 
