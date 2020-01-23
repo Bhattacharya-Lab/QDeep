@@ -41,6 +41,7 @@ qDeep_path = '/home/project/scoreDml/resNet/new_version/multiple_thresholds/tool
 #---------------------------------------------------------------#
 parser = argparse.ArgumentParser()
 
+parser._optionals.title = "Arguments"
 parser.add_argument('--tar', dest='target_name',
         default = '',    # default empty!
         help = 'Target name')
