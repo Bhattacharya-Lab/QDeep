@@ -55,7 +55,6 @@ $ python configure.py
 ## Usage
 To run QDeep, type
 ```
-$ cd QDeep
 $ python QDeep.py
 ```
 You will see the following output
