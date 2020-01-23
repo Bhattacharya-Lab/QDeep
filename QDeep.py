@@ -30,11 +30,11 @@ print('**********************************************************************')
 #Configures before the first use                                #
 #---------------------------------------------------------------#
 
-configured = 1
+configured = 0
 if(configured == 0):
-	print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ cd python configure.py\n")
+	print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ python configure.py\n")
 	exit(1)
-qDeep_path = '/home/project/scoreDml/resNet/new_version/multiple_thresholds/tools/app/'
+qDeep_path = 'change/to/your/current/directory'
 
 #------------------------arguments------------------------------#
 #Shows help to the users                                        #
