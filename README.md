@@ -69,7 +69,7 @@ usage: QDeep.py [-h] [--tar TARGET_NAME] [--fas FASTA_FILE] [--dec DECOY_DIR]
                 [--spd SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]
                 [--out OUTPUT_PATH]
 
-optional arguments:
+Arguments:
   -h, --help            show this help message and exit
   --tar TARGET_NAME     Target name
   --fas FASTA_FILE      Fasta file
@@ -77,7 +77,7 @@ optional arguments:
   --aln ALN_FILE        Multiple Sequence Alignment
   --dist DISTANCE_FILE  DMPfold predicted distance
   --pssm PSSM_FILE      PSSM file
-  --spd SPD33_FILE      SPIDER3 output (.spd33)
+  --spd SPD33_FILE      SPIDER3 output (.spd3)
   --msa YES             yes|no Whether to use deep MSA (default: no)
   --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU
                         (default: CPU)
