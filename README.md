@@ -45,7 +45,7 @@ $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 $ cd setup
 $ python setup.py install
 ```
-6. Go to the directory where you download QDeep and configure by typing
+6. Go to the directory where you download QDeep and configure by typing:
 ```
 $ cd QDeep
 $ python configure.py
