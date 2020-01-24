@@ -11,5 +11,6 @@ with open("QDeep.py", "rt") as input_file:
                 for line in input_file:
                         output_file.write(line.replace('configured = 0', 'configured = 1'))
 os.system('mv QDeep_tmp.py QDeep.py')
+os.system('chmod a+x ' + working_dir + '/modules/*')
 
 print('\nConfigured successfully!\n')

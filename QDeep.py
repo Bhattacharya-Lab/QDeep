@@ -155,11 +155,11 @@ class QDeep():
         #---------------------------------------------------------------#
         def check_options(self):
                 if (fasta_file != "" and target_name != "" and decoy_dir != "" and 
-                    aln_file != "" and pssm_file != "" and spd3_file != "" and 
-                    dist_file != "" and output_path != ""):
-                    return True
+                        aln_file != "" and pssm_file != "" and spd3_file != "" and 
+                        dist_file != "" and output_path != ""):
+                        return True
                 else:
-                    return False
+                        return False
 
         #---------------------validate input files----------------------#
         #checks validity of input file                                  #
@@ -299,10 +299,10 @@ class QDeep():
         #parameter: number                                              #
         #---------------------------------------------------------------#
         def sigmoid(self, x):
-          if x < 0:
-            return 1 - 1/(1 + math.exp(x))
-          else:
-            return 1/(1 + math.exp(-x))
+              if x < 0:
+                    return 1 - 1/(1 + math.exp(x))
+              else:
+                    return 1/(1 + math.exp(-x))
 
         #---------------------get_unique_list---------------------------#
         #purpose: takes a list and return a non-redundant list          #
@@ -310,7 +310,7 @@ class QDeep():
         #---------------------------------------------------------------#
         def get_unique_list(self, in_list):
                 if isinstance(in_list,list):
-                    return list(set(in_list))
+                        return list(set(in_list))
 
         #---------------------readFiles---------------------------------#
         #purpose: reads and store all files in a dir to an array        #
@@ -322,7 +322,7 @@ class QDeep():
             for file in os.listdir(directory):
                     #getOnlyFileName=os.path.splitext(file.rsplit('.', 2)[0])[0]
                     if(file.endswith(".pdb")):
-                        filesInDir.append(file)
+                            filesInDir.append(file)
             return filesInDir
                     
         #-----------------------run_dssp--------------------------------#
@@ -423,39 +423,39 @@ class QDeep():
         #---------------------------------------------------------------#
         def generate_int_map(self):
                 if not os.path.isdir(output_path + "/int_maps"):
-                    os.makedirs(output_path + "/int_maps")
+                        os.makedirs(output_path + "/int_maps")
 
                 #------interaction map at threshold 6---------#
                 #                                             #
                 #---------------------------------------------#
                 threshold = [6]
                 for i in range(len(threshold)):
-                    #os.chdir(output_path + "/int_maps")
-                    outFile = open(output_path + "/int_maps/" + self.target_name + "_" + str(threshold[i]) + ".rr", "w")
-                    with open(dist_file) as cFile:
-                        for line in cFile:
-                            tmp = line.split()
-                            total_prob = 0
-                            string = ""
-                            for t in range(threshold[i] - 2):
-                                total_prob = total_prob + float(tmp[t + 2])
-                                outFile.write(tmp[0] + "  " + tmp[1] + "  " + str(total_prob) + "\n")
-                    outFile.close()
-                    #os.chdir(working_path)
+                        #os.chdir(output_path + "/int_maps")
+                        outFile = open(output_path + "/int_maps/" + self.target_name + "_" + str(threshold[i]) + ".rr", "w")
+                        with open(dist_file) as cFile:
+                                for line in cFile:
+                                        tmp = line.split()
+                                        total_prob = 0
+                                        string = ""
+                                        for t in range(threshold[i] - 2):
+                                                total_prob = total_prob + float(tmp[t + 2])
+                                        outFile.write(tmp[0] + "  " + tmp[1] + "  " + str(total_prob) + "\n")
+                        outFile.close()
+                        #os.chdir(working_path)
 
                 threshold = [8, 10, 12, 14]
                 for i in range(len(threshold)):
-                    #os.chdir(output_path + "/int_maps")
-                    outFile = open(output_path + "/int_maps/" + self.target_name + "_" + str(threshold[i]) + ".rr", "w")
-                    with open(dist_file) as cFile:
-                        for line in cFile:
-                            tmp = line.split()
-                            total_prob = 0
-                            string = ""
-                            for t in range(threshold[i]):
-                                total_prob = total_prob + float(tmp[t + 2])
-                                outFile.write(tmp[0] + "  " + tmp[1] + "  " + str(total_prob) + "\n")
-                    outFile.close() 
+                        #os.chdir(output_path + "/int_maps")
+                        outFile = open(output_path + "/int_maps/" + self.target_name + "_" + str(threshold[i]) + ".rr", "w")
+                        with open(dist_file) as cFile:
+                                for line in cFile:
+                                        tmp = line.split()
+                                        total_prob = 0
+                                        string = ""
+                                        for t in range(threshold[i]):
+                                                total_prob = total_prob + float(tmp[t + 2])
+                                        outFile.write(tmp[0] + "  " + tmp[1] + "  " + str(total_prob) + "\n")
+                        outFile.close() 
 
 
         #------------------------align_map------------------------------#
@@ -463,40 +463,40 @@ class QDeep():
         #---------------------------------------------------------------#
         def align_map(self):
                 if not os.path.isdir(output_path + "/cmo"):
-                    os.makedirs(output_path + "/cmo")
+                        os.makedirs(output_path + "/cmo")
                 
                 decoys = os.listdir(decoy_dir)
                 #------for 6A interact map------#
                 #                               #
                 #-------------------------------#
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_6.rr')):
-                    os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_6.rr ' + output_path + "/cmo")
+                        os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_6.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
                 #step3: format the predicted interaction map
                 lines_pred = []
                 with open(self.target_name + '_6.rr') as pCon:
-                    for line in pCon:
-                        lines_pred.append(line)
+                        for line in pCon:
+                                lines_pred.append(line)
 
                 out_file = open(self.target_name + '_6.rr', 'w')
                 os.chdir(working_path)
                 #open fasta to get the number of residue#
                 with open(fasta_file) as fa_file:
-                    for line in fa_file:
-                        length = line.split()[-2]
-                        break;                                                                                                                                                                                                              
+                        for line in fa_file:
+                                length = line.split()[-2]
+                                break;                                                                                                                                                                                                              
 
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
                 out_file.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
-                    temp_l = lines_pred[l].split()
-                    #--------change int. map threshold here---------#
-                    #                                               #
-                    #-----------------------------------------------#
-                    if(float(temp_l[2]) > 0.2):
-                        out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
+                        temp_l = lines_pred[l].split()
+                        #--------change int. map threshold here---------#
+                        #                                               #
+                        #-----------------------------------------------#
+                        if(float(temp_l[2]) > 0.2):
+                                out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 out_file.close()
 
                 #step1: calculate int. map from the pdbs#
@@ -534,62 +534,62 @@ class QDeep():
                 #-------------------------------#
                 #copy the predicted int.map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_8.rr')):
-                    os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_8.rr ' + output_path + "/cmo")
+                        os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_8.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
                 #step3: format the predicted int. map
                 lines_pred = []
                 with open(self.target_name + '_8.rr') as pCon:
-                    for line in pCon:
-                        lines_pred.append(line)
+                        for line in pCon:
+                                lines_pred.append(line)
 
                 outFile = open(self.target_name + '_8.rr', 'w')
 
                 #open fasta to get the number of residue#
                 os.chdir(working_path)
                 with open(fasta_file) as fa_file:
-                    for line in fa_file:
-                        length = line.split()[-2]
-                        break;
+                        for line in fa_file:
+                                length = line.split()[-2]
+                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
                 outFile.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
-                    temp_l = lines_pred[l].split()
-                    #--------change int. map threshold here---------#
-                    #						    #
-                    #-----------------------------------------------#
-                    if(float(temp_l[2]) > 0.2):
-                        outFile.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
+                        temp_l = lines_pred[l].split()
+                        #--------change int. map threshold here---------#
+                        #						    #
+                        #-----------------------------------------------#
+                        if(float(temp_l[2]) > 0.2):
+                                outFile.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 outFile.close()
 
                 #step1: calculate int. map from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
-                    os.chdir(working_path)
-                    os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
-                    os.chdir(output_path + "/cmo")
-                    # step:2 format the rr file for aleigen
-                    lines = []
-                    with open(decoys[d].split('.')[0] + '_true.rr') as tcFile:
-                        for line in tcFile:
-                            lines.append(line)
+                        os.chdir(working_path)
+                        os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
+                        os.chdir(output_path + "/cmo")
+                        # step:2 format the rr file for aleigen
+                        lines = []
+                        with open(decoys[d].split('.')[0] + '_true.rr') as tcFile:
+                                for line in tcFile:
+                                        lines.append(line)
 
-                    #open file
-                    final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
-                    count = 0
-                    for c in range(len(lines)):
-                        temp_con = lines[c].split()
-                        if(count == 0):
-                            final_out.write(str(len(temp_con[0])) + '\n')
-                        else:
-                            final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
-                        count += 1
+                        #open file
+                        final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
+                        count = 0
+                        for c in range(len(lines)):
+                                temp_con = lines[c].split()
+                                if(count == 0):
+                                        final_out.write(str(len(temp_con[0])) + '\n')
+                                else:
+                                        final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
+                                count += 1
 
-                    final_out.close()
-                    #step4: run aleigen
-                    os.system('/home/project/scoreDml/resNet/tools/cmo/aleigen ' + decoys[d].split('.')[0] + '_true.rr' + ' '
-                          + self.target_name + '_8.rr 6 &>' + decoys[d].split('.')[0] + '_8.cmo')
+                        final_out.close()
+                        #step4: run aleigen
+                        os.system(aleigen_path + ' ' + decoys[d].split('.')[0] + '_true.rr' + ' '
+                              + self.target_name + '_8.rr 6 &>' + decoys[d].split('.')[0] + '_8.cmo')
                 os.chdir(working_path)
 
                 #--------for 10A int. map--------#
@@ -597,63 +597,63 @@ class QDeep():
                 #--------------------------------#
                 #copy the predicted int. map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_10.rr')):
-                    os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_10.rr ' + output_path + "/cmo")
+                        os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_10.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
                 #step3: format the predicted int. map
                 lines_pred = []
                 with open(self.target_name + '_10.rr') as p_con:
-                    for line in p_con:
-                        lines_pred.append(line)
+                        for line in p_con:
+                                lines_pred.append(line)
 
                 out_file = open(self.target_name + '_10.rr', 'w')
 
                 #open fasta to get the number of residue#
                 os.chdir(working_path)
                 with open(fasta_file) as fa_file:
-                    for line in fa_file:
-                        length = line.split()[-2]
-                        break;
+                        for line in fa_file:
+                                length = line.split()[-2]
+                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
                 out_file.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
-                    temp_l = lines_pred[l].split()
-                    #--------change int. map threshold here---------#
-                    #					            #
-                    #-----------------------------------------------#
-                    if(float(temp_l[2]) > 0.2):
-                        out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
+                        temp_l = lines_pred[l].split()
+                        #--------change int. map threshold here---------#
+                        #					            #
+                        #-----------------------------------------------#
+                        if(float(temp_l[2]) > 0.2):
+                                out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 out_file.close()
 
                 #step1: calculate int. map from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
-                    os.chdir(working_path)
-                    os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
-                    os.chdir(output_path + "/cmo")
+                        os.chdir(working_path)
+                        os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
+                        os.chdir(output_path + "/cmo")
 
-                    # step:2 format the rr file for aleigen
-                    lines = []
-                    with open(decoys[d].split('.')[0] + '_true.rr') as tcFile:
-                        for line in tcFile:
-                            lines.append(line)
+                        # step:2 format the rr file for aleigen
+                        lines = []
+                        with open(decoys[d].split('.')[0] + '_true.rr') as tcFile:
+                                for line in tcFile:
+                                        lines.append(line)
 
-                    #open file
-                    final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
-                    count = 0
-                    for c in range(len(lines)):
-                        temp_con = lines[c].split()
-                        if(count == 0):
-                            final_out.write(str(len(temp_con[0])) + '\n')
-                        else:
-                            final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
-                        count += 1
+                        #open file
+                        final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
+                        count = 0
+                        for c in range(len(lines)):
+                                temp_con = lines[c].split()
+                                if(count == 0):
+                                        final_out.write(str(len(temp_con[0])) + '\n')
+                                else:
+                                        final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
+                                count += 1
 
-                    final_out.close()
-                    #step4: run aleigen
-                    os.system('/home/project/scoreDml/resNet/tools/cmo/aleigen ' + decoys[d].split('.')[0] + '_true.rr' + ' '
-                          + self.target_name + '_10.rr 6 &>' + decoys[d].split('.')[0] + '_10.cmo')
+                        final_out.close()
+                        #step4: run aleigen
+                        os.system(aleigen_path + ' ' + decoys[d].split('.')[0] + '_true.rr' + ' '
+                              + self.target_name + '_10.rr 6 &>' + decoys[d].split('.')[0] + '_10.cmo')
 
                 os.chdir(working_path)
                 #--------for 12A int. map--------#
@@ -661,63 +661,63 @@ class QDeep():
                 #--------------------------------#
                 #copy the predicted int. map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_12.rr')):
-                    os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_12.rr ' + output_path + "/cmo")
+                        os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_12.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
                 #step3: format the predicted int. map
                 lines_pred = []
                 with open(self.target_name + '_12.rr') as p_con:
-                    for line in p_con:
-                        lines_pred.append(line)
+                        for line in p_con:
+                                lines_pred.append(line)
 
                 out_file = open(self.target_name + '_12.rr', 'w')
 
                 #open fasta to get the number of residue#
                 os.chdir(working_path)
                 with open(fasta_file) as fa_file:
-                    for line in fa_file:
-                        length = line.split()[-2]
-                        break;
+                        for line in fa_file:
+                                length = line.split()[-2]
+                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
                 out_file.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
-                    temp_l = lines_pred[l].split()
-                    #--------change int. map threshold here---------#
-                    #						    #
-                    #-----------------------------------------------#
-                    if(float(temp_l[2]) > 0.2):
-                        out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
+                        temp_l = lines_pred[l].split()
+                        #--------change int. map threshold here---------#
+                        #						    #
+                        #-----------------------------------------------#
+                        if(float(temp_l[2]) > 0.2):
+                                out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 out_file.close()
 
                 #step1: calculate int. maps from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
-                    os.chdir(working_path)
-                    os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
-                    os.chdir(output_path + "/cmo")
+                        os.chdir(working_path)
+                        os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
+                        os.chdir(output_path + "/cmo")
 
-                    # step:2 format the rr file for aleigen
-                    lines = []
-                    with open(decoys[d].split('.')[0] + '_true.rr') as tc_file:
-                        for line in tc_file:
-                            lines.append(line)
+                        # step:2 format the rr file for aleigen
+                        lines = []
+                        with open(decoys[d].split('.')[0] + '_true.rr') as tc_file:
+                                for line in tc_file:
+                                        lines.append(line)
 
-                    #open file
-                    final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
-                    count = 0
-                    for c in range(len(lines)):
-                        temp_con = lines[c].split()
-                        if(count == 0):
-                            final_out.write(str(len(temp_con[0])) + '\n')
-                        else:
-                            final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
-                        count += 1
+                        #open file
+                        final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
+                        count = 0
+                        for c in range(len(lines)):
+                                temp_con = lines[c].split()
+                                if(count == 0):
+                                        final_out.write(str(len(temp_con[0])) + '\n')
+                                else:
+                                        final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
+                                count += 1
 
-                    final_out.close()
-                    #step4: run aleigen
-                    os.system('/home/project/scoreDml/resNet/tools/cmo/aleigen ' + decoys[d].split('.')[0] + '_true.rr' + ' '
-                          + self.target_name + '_12.rr 6 &>' + decoys[d].split('.')[0] + '_12.cmo')
+                        final_out.close()
+                        #step4: run aleigen
+                        os.system(aleigen_path + ' ' + decoys[d].split('.')[0] + '_true.rr' + ' '
+                              + self.target_name + '_12.rr 6 &>' + decoys[d].split('.')[0] + '_12.cmo')
 
 
                 os.chdir(working_path)
@@ -727,62 +727,62 @@ class QDeep():
                 #--------------------------------#
                 #copy the predicted int. map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_14.rr')):
-                    os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_14.rr ' + output_path + "/cmo")
+                        os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_14.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
                 lines_pred = []
                 with open(self.target_name + '_14.rr') as p_con:
-                    for line in p_con:
-                        lines_pred.append(line)
+                        for line in p_con:
+                                lines_pred.append(line)
 
                 out_file = open(self.target_name + '_14.rr', 'w')
 
                 #open fasta to get the number of residue#
                 os.chdir(working_path)
                 with open(fasta_file) as fa_file:
-                    for line in fa_file:
-                        length = line.split()[-2]
-                        break;
+                        for line in fa_file:
+                                length = line.split()[-2]
+                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
                 out_file.write(str(length) + '\n')
                 for l in range(len(lines_pred)):
-                    temp_l = lines_pred[l].split()
-                    #--------change int_map threshold here----------#
-                    #                                               #
-                    #-----------------------------------------------#
-                    if(float(temp_l[2]) > 0.2):
-                        out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
+                        temp_l = lines_pred[l].split()
+                        #--------change int_map threshold here----------#
+                        #                                               #
+                        #-----------------------------------------------#
+                        if(float(temp_l[2]) > 0.2):
+                                out_file.write(str(int(temp_l[0]) -1) + ' ' + str(int(temp_l[1]) -1) + '\n')
                 out_file.close()
 
                 #step1: calculate int_map from the pdbs#
                 #decoys = os.listdir(decoy_dir)
                 for d in range(len(decoys)):
-                    os.chdir(working_path)
-                    os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
-                    os.chdir(output_path + "/cmo")
+                        os.chdir(working_path)
+                        os.system('perl ' + pdb2rr_path + ' ' + decoy_dir + '/' + decoys[d] + ' CB 5 8&> ' + output_path + "/cmo/" + decoys[d].split('.')[0] + '_true.rr')
+                        os.chdir(output_path + "/cmo")
 
-                    # step:2 format the rr file for aleigen
-                    lines = []
-                    with open(decoys[d].split('.')[0] + '_true.rr') as tc_file:
-                        for line in tc_file:
-                            lines.append(line)
+                        # step:2 format the rr file for aleigen
+                        lines = []
+                        with open(decoys[d].split('.')[0] + '_true.rr') as tc_file:
+                                for line in tc_file:
+                                        lines.append(line)
 
-                    #open file
-                    final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
-                    count = 0
-                    for c in range(len(lines)):
-                        temp_con = lines[c].split()
-                        if(count == 0):
-                            final_out.write(str(len(temp_con[0])) + '\n')
-                        else:
-                            final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
-                        count += 1
+                        #open file
+                        final_out = open(decoys[d].split('.')[0] + '_true.rr', 'w')
+                        count = 0
+                        for c in range(len(lines)):
+                                temp_con = lines[c].split()
+                                if(count == 0):
+                                        final_out.write(str(len(temp_con[0])) + '\n')
+                                else:
+                                        final_out.write(str(int(temp_con[0]) - 1) + ' ' + str(int(temp_con[1]) - 1) + '\n')
+                                count += 1
 
-                    final_out.close()
-                    #step4: run aleigen
-                    os.system('/home/project/scoreDml/resNet/tools/cmo/aleigen ' + decoys[d].split('.')[0] + '_true.rr' + ' '
-                          + self.target_name + '_14.rr 6 &>' + decoys[d].split('.')[0] + '_14.cmo')
+                        final_out.close()
+                        #step4: run aleigen
+                        os.system(aleigen_path + ' ' + decoys[d].split('.')[0] + '_true.rr' + ' '
+                              + self.target_name + '_14.rr 6 &>' + decoys[d].split('.')[0] + '_14.cmo')
 
                 os.chdir(working_path)       
 
@@ -791,7 +791,7 @@ class QDeep():
         #---------------------------------#
         def generate_neff(self):
             if not os.path.isdir(output_path + "/neff"):
-                os.makedirs(output_path + "/neff")
+                    os.makedirs(output_path + "/neff")
             os.system('cp ' + aln_file + ' ' + output_path + "/neff")
             os.chdir(output_path + "/neff")
             os.system(neff_path + ' ' + self.target_name + '.aln 0.8&> ' + self.target_name + '.neff')
@@ -801,337 +801,337 @@ class QDeep():
         #                                                                                                  #
         #--------------------------------------------------------------------------------------------------#
         def processSlidingWindow_train_with_0(self, featureFile, targetDir, window_size):
-            del features[:]
-            del finalFeatures[:]
-            ##reading all features to a list##    
-            with open(featureFile) as fFile:
-                first_res = 1
-                for line in fFile:
-                    #pad features for blanks#
-                    #---pad feat at the beginning---#
-                    #                               #
-                    #-------------------------------#
-                    if(first_res == 1):
+                del features[:]
+                del finalFeatures[:]
+                ##reading all features to a list##    
+                with open(featureFile) as fFile:
+                        first_res = 1
+                        for line in fFile:
+                                #pad features for blanks#
+                                #---pad feat at the beginning---#
+                                #                               #
+                                #-------------------------------#
+                                if(first_res == 1):
+                                        feat_len = len(line.split())
+                                        #how many lines to pad? = (window_size-1)/2
+                                        for p in range(int((window_size - 1)/2)):
+                                                feat = ""
+                                                #how many features? = len of feat
+                                                for l in range(feat_len):
+                                                        feat += "0 "
+                                                features.append(feat)
+                                features.append(line.rstrip())
+                                first_res = 0
+                        #------pad feat at the end------#
+                        #                               #
+                        #-------------------------------#
                         feat_len = len(line.split())
-                        #how many lines to pad? = (window_size-1)/2
+                        #how many lines to pad? = window_size/2 - 1
                         for p in range(int((window_size - 1)/2)):
-                            feat = ""
-                            #how many features? = len of feat
-                            for l in range(feat_len):
-                                feat += "0 "
-                            features.append(feat)
-                    features.append(line.rstrip())
-                    first_res = 0
-                #------pad feat at the end------#
-                #                               #
-                #-------------------------------#
-                feat_len = len(line.split())
-                #how many lines to pad? = window_size/2 - 1
-                for p in range(int((window_size - 1)/2)):
-                    feat = ""
-                    #how many features? = len of feat + 1 (label)
-                    for l in range(feat_len):
-                        feat += "0 "
-                    features.append(feat)
-                    
-            start = 0
-            for i in range((len(features)-int(window_size))+1):
-                tmpFeatures=[]
-                tmpIndFtrs=[]
-                window_label=[]
-                label=0
-                ##label position (middle)##
-                window_label=(int(window_size)/2)+1
-                ##read till total no of window size##
-                for j in range (int(window_size)):
-                    ##taking all features except the label##
-                    tmp=features[j+start].split()
-                    tmpFeatures.append(tmp)
-                    ##determining the label (middle)##
-                    #if(j+1==int(window_label)):
-                    #    label=tmp[-1]
-                start=start+1
-                ##store individual features for concatenation##
-                for k in range(len(tmpFeatures)):
-                    for l in range(len(tmpFeatures[k])):
-                        tmpIndFtrs.append(tmpFeatures[k][l])
-                len(tmpIndFtrs)
-                finalFeatures.append(" ".join(tmpIndFtrs))
+                                feat = ""
+                                #how many features? = len of feat + 1 (label)
+                                for l in range(feat_len):
+                                        feat += "0 "
+                                features.append(feat)
+                        
+                start = 0
+                for i in range((len(features)-int(window_size))+1):
+                        tmpFeatures=[]
+                        tmpIndFtrs=[]
+                        window_label=[]
+                        label=0
+                        ##label position (middle)##
+                        window_label=(int(window_size)/2)+1
+                        ##read till total no of window size##
+                        for j in range (int(window_size)):
+                                ##taking all features except the label##
+                                tmp=features[j+start].split()
+                                tmpFeatures.append(tmp)
+                                ##determining the label (middle)##
+                                #if(j+1==int(window_label)):
+                                #    label=tmp[-1]
+                        start=start+1
+                        ##store individual features for concatenation##
+                        for k in range(len(tmpFeatures)):
+                                for l in range(len(tmpFeatures[k])):
+                                        tmpIndFtrs.append(tmpFeatures[k][l])
+                        len(tmpIndFtrs)
+                        finalFeatures.append(" ".join(tmpIndFtrs))
 
-            #-----write features------#
-            #                         #
-            #-------------------------#
-            featOut = open(targetDir + "/" + os.path.splitext(featureFile.rsplit('/', 1)[-1])[0] + ".window_feat", "w")
-            for feat in range(len(finalFeatures)):
-                featOut.write(finalFeatures[feat] + "\n")
-            featOut.close()
+                #-----write features------#
+                #                         #
+                #-------------------------#
+                featOut = open(targetDir + "/" + os.path.splitext(featureFile.rsplit('/', 1)[-1])[0] + ".window_feat", "w")
+                for feat in range(len(finalFeatures)):
+                        featOut.write(finalFeatures[feat] + "\n")
+                featOut.close()
 
 
         #-----------------------------------Step 1:process unique features---------------------------------------------#
         #                                                                                                              #
         #--------------------------------------------------------------------------------------------------------------#
         def generate_feature(self):
-            #----------get neff feat---------#
-            #                                #
-            #--------------------------------#
-            noOfEffSeq = self.get_neff()
+                #----------get neff feat---------#
+                #                                #
+                #--------------------------------#
+                noOfEffSeq = self.get_neff()
 
-            #-------Failed decoy log---------#
-            #                                #
-            #--------------------------------#
-            global total_failed_decoy
-            total_failed_decoy = 0
-            failed_decoy = open(output_path + '/failed_decoy.log', 'w')
-            
-            #check here whether all features have been generated or not#
-            #fetch lines from files those are common#
-            pssmLines = []
-            spd3Lines = []
-
-            if os.path.isfile(pssm_file):
-                with open(pssm_file) as fFile:
-                    for line in fFile:                    
-                        tmp = line.split()
-                        if(len(tmp) > 0):
-                            pssmLines.append(line)
-                            
-            if os.path.isfile(spd3_file):
-                with open(spd3_file) as fFile:
-                    for line in fFile:                    
-                        tmp = line.split()
-                        if(len(tmp) > 0 and tmp[0] != "#"):
-                            spd3Lines.append(line)
-
-
-            if not os.path.isdir(output_path + "/features"):
-                os.makedirs(output_path + "/features")
-
-            if not os.path.isdir(output_path + "/residue_list"):
-                os.makedirs(output_path + "/residue_list")
-            #---------------for each decoy---------------#
-            #                                            #
-            #--------------------------------------------#
-            #read all deocoys for the taraget
-            self.read_files(decoy_dir)
-            for d in range(len(filesInDir)): #for each decoy
-                outputFeat = open(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat", "w")
-
-                #--------get CMO--------#
-                #                       #
-                #-----------------------#
-                cmo_score_6 = 0
-                cmo_score_6 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_6.cmo') * 10) / float(100)
-
-                cmo_score_8 = 0
-                cmo_score_8 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_8.cmo') * 25) / float(100)
+                #-------Failed decoy log---------#
+                #                                #
+                #--------------------------------#
+                global total_failed_decoy
+                total_failed_decoy = 0
+                failed_decoy = open(output_path + '/failed_decoy.log', 'w')
                 
-                cmo_score_10 = 0
-                cmo_score_10 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_10.cmo') * 30) / float(100)
-                
-                cmo_score_12 = 0
-                cmo_score_12 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_12.cmo') * 25) / float(100)
+                #check here whether all features have been generated or not#
+                #fetch lines from files those are common#
+                pssmLines = []
+                spd3Lines = []
 
-                cmo_score_14 = 0
-                cmo_score_14 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_14.cmo') * 10) / float(100)
-                
-                #get residue list from the reference model
-                ######################################get residue index#################################################
-                residueList=[]
-                tmp_residue_list = []
-                start_end_ResNo = []                                                                                  ##
-                with open(decoy_dir + "/" + filesInDir[d]) as file:                                                   ##
-                    for line in file:                                                                                 ##
-                        if(line[0:(0+4)]=="ATOM"):                                                                    ##
-                            start_end_ResNo.append(line[22:(22+4)])                                                   ##
-                                                                                                                      ##
-                residueList=sorted((self.get_unique_list(start_end_ResNo)))                                           ##
-                residueList=list(map(int, residueList))                                                               ##
-                ######################################process each decoy file with respect to the native################
-                #-------residue-wise feature extraction------#
+                if os.path.isfile(pssm_file):
+                    with open(pssm_file) as fFile:
+                            for line in fFile:                    
+                                    tmp = line.split()
+                                    if(len(tmp) > 0):
+                                            pssmLines.append(line)
+                                
+                if os.path.isfile(spd3_file):
+                    with open(spd3_file) as fFile:
+                            for line in fFile:                    
+                                    tmp = line.split()
+                                    if(len(tmp) > 0 and tmp[0] != "#"):
+                                            spd3Lines.append(line)
+
+
+                if not os.path.isdir(output_path + "/features"):
+                        os.makedirs(output_path + "/features")
+
+                if not os.path.isdir(output_path + "/residue_list"):
+                        os.makedirs(output_path + "/residue_list")
+                #---------------for each decoy---------------#
                 #                                            #
                 #--------------------------------------------#
+                #read all deocoys for the taraget
+                self.read_files(decoy_dir)
+                for d in range(len(filesInDir)): #for each decoy
+                    outputFeat = open(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat", "w")
 
-                #--------for each residue of a decoy---------#
-                #                                            #
-                #--------------------------------------------#
-                total_phi = 0
-                total_psi = 0
-                total_feat_res = 0
-                angular_rmsd_phi = ""
-                angular_rmsd_psi = ""
-                angular_rmsd_norm_phi = ""
-                angular_rmsd_norm_psi = ""
-                for r in range(len(residueList)):
-                    feat_pssm = ""
-                    feat_ss = ""
-                    feat_sa = 0
-                    feat_rosetta = ""
-                    feat_mass = ""
-                    feat_rosetta = ""
-                    lga_label = ""
-                    feat_max_prob = 0
+                    #--------get CMO--------#
+                    #                       #
+                    #-----------------------#
+                    cmo_score_6 = 0
+                    cmo_score_6 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_6.cmo') * 10) / float(100)
+
+                    cmo_score_8 = 0
+                    cmo_score_8 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_8.cmo') * 25) / float(100)
                     
-                    #----------PSSM features--------#
-                    #                               #
-                    #-------------------------------#
-                    for p in range(len(pssmLines)):                 
-                        tmp = pssmLines[p].split()
-                        if(len(tmp) > 20 and tmp[0] != 'A' and tmp[0] != 'K' and tmp[0] != 'Standard' and
-                           tmp[0] != 'PSI' and tmp[0] != 'Last' and int(tmp[0]) == residueList[r]):
-                            feat_pssm += str(self.sigmoid(float(tmp[43])))
-                            break
+                    cmo_score_10 = 0
+                    cmo_score_10 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_10.cmo') * 30) / float(100)
+                    
+                    cmo_score_12 = 0
+                    cmo_score_12 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_12.cmo') * 25) / float(100)
+
+                    cmo_score_14 = 0
+                    cmo_score_14 = float(self.get_cmo(output_path + '/cmo/' + filesInDir[d].split('.')[0] + '_14.cmo') * 10) / float(100)
+                    
+                    #get residue list from the reference model
+                    ######################################get residue index#################################################
+                    residueList=[]
+                    tmp_residue_list = []
+                    start_end_ResNo = []                                                                                  ##
+                    with open(decoy_dir + "/" + filesInDir[d]) as file:                                                   ##
+                        for line in file:                                                                                 ##
+                            if(line[0:(0+4)]=="ATOM"):                                                                    ##
+                                start_end_ResNo.append(line[22:(22+4)])                                                   ##
+                                                                                                                          ##
+                    residueList=sorted((self.get_unique_list(start_end_ResNo)))                                           ##
+                    residueList=list(map(int, residueList))                                                               ##
+                    ######################################process each decoy file with respect to the native################
+                    #-------residue-wise feature extraction------#
+                    #                                            #
+                    #--------------------------------------------#
+
+                    #--------for each residue of a decoy---------#
+                    #                                            #
+                    #--------------------------------------------#
+                    total_phi = 0
+                    total_psi = 0
+                    total_feat_res = 0
+                    angular_rmsd_phi = ""
+                    angular_rmsd_psi = ""
+                    angular_rmsd_norm_phi = ""
+                    angular_rmsd_norm_psi = ""
+                    for r in range(len(residueList)):
+                        feat_pssm = ""
+                        feat_ss = ""
+                        feat_sa = 0
+                        feat_rosetta = ""
+                        feat_mass = ""
+                        feat_rosetta = ""
+                        lga_label = ""
+                        feat_max_prob = 0
                         
-                    #-------SA and SS features------#
-                    #                               #
-                    #-------------------------------#
-                    #SS and SA features (for each residue, after matching with the residue, extract ss and sa)
-                    ss=""
-                    sa=""
-                    aa=""
-
-                    #-------Process each DSSP-------#
-                    #                               #
-                    #-------------------------------#
-                    dsspResFound = 0
-                    if os.path.isfile(output_path + "/dssp/" + filesInDir[d].split('.')[0] + ".dssp"):
-                        with open(output_path + "/dssp/" + filesInDir[d].split('.')[0] + ".dssp") as fp:
-                            line = fp.readline()
-                            cntLn = 0 ##line counter##
-                            
-                            residue="#"
-                            while line: ##reading each line##
-                                line = fp.readline()
-                                if (cntLn<1):
-                                    if (line[2:(2+len(residue))] == residue):
-                                        cntLn+=1
-                                        continue
-                                    
-                                if (cntLn>0):
-                                    if (len(line)>0):
-                                        if(line[13:(13+1)].isalpha()):
-                                            ssSeq = line[16:(16+1)]
-                                            saSeq = line[35:(35+3)].strip()
-                                            aaSeqNo = line[6:(6+4)].strip()
-                                            aaSeq = line[13:(13+1)]
-                                            dsspPhi = float(line[103:(103+6)])
-                                            dsspPsi = float(line[109:(109+6)])
-                                            ##8 to 3 state conversion
-                                            #ss.append(get8to3ss(ssSeq))
-                                            #if the residue numbers match
-                                            if(int(aaSeqNo) == residueList[r]):
-                                                ss = self.get8to3ss(ssSeq)
-                                                sa = saSeq
-                                                aa = aaSeq
-                                                dsspResFound = 1
-                                                break
-                                            
-                    #agreement between spd3 and dssp (parse dssp file)
-                    spdSS = ""
-                    spdSA = ""
-                    spdAA = ""
-                    spdResFound = 0
-                    for spd in range(len(spd3Lines)):
-                        spdSeqNo = spd3Lines[spd][0:(0+3)]
-                        #if the residue numbers match
-                        if(int(spdSeqNo) == residueList[r]):
-                            spdSS = spd3Lines[spd][6:(6+1)]
-                            spdSA = spd3Lines[spd][8:(8+5)]
-                            spdAA = spd3Lines[spd][4:(4+1)]
-                            spdPhi = float(spd3Lines[spd][14:(14+6)])
-                            spdPsi = float(spd3Lines[spd][21:(21+6)])
-                            feat_max_prob = max(float(spd3Lines[spd][52:(52+5)]), float(spd3Lines[spd][58:(58+5)]), float(spd3Lines[spd][64:(64+5)]))
-                            spdResFound = 1
-                            break
-
-                    if(dsspResFound == 1 and spdResFound == 1):
-                        if(spdSS == ss):
-                            feat_ss = "1"
-                        else:
-                            feat_ss = "0"
-
-                        #squared error
-                        feat_sa = pow(self.get_rsa(spdAA, spdSA) - self.get_rsa(aa, sa), 2)
-                        #------ROSETTA energy terms-----#
+                        #----------PSSM features--------#
                         #                               #
                         #-------------------------------#
-                        if os.path.isfile(output_path + "/rosetta/" + filesInDir[d].split('.')[0] + ".rosetta"):
-                            with open(output_path + "/rosetta/" + filesInDir[d].split('.')[0] + ".rosetta") as rosFile:
-                                for line in rosFile:
-                                    tmpRos = line.split()
-                                    if(len(tmpRos) > 0):
-                                        if(int(tmpRos[0]) == residueList[r]):
-                                            for ros in range(1, 13):
-                                                feat_rosetta += str(self.sigmoid(float(tmpRos[ros]))) + " "
-                                            break        
+                        for p in range(len(pssmLines)):                 
+                            tmp = pssmLines[p].split()
+                            if(len(tmp) > 20 and tmp[0] != 'A' and tmp[0] != 'K' and tmp[0] != 'Standard' and
+                               tmp[0] != 'PSI' and tmp[0] != 'Last' and int(tmp[0]) == residueList[r]):
+                                feat_pssm += str(self.sigmoid(float(tmp[43])))
+                                break
+                            
+                        #-------SA and SS features------#
+                        #                               #
+                        #-------------------------------#
+                        #SS and SA features (for each residue, after matching with the residue, extract ss and sa)
+                        ss=""
+                        sa=""
+                        aa=""
 
-                    comp_feature = str(feat_pssm) + " " + str(feat_ss) + " " + str(feat_sa) + " " + str(feat_rosetta)
+                        #-------Process each DSSP-------#
+                        #                               #
+                        #-------------------------------#
+                        dsspResFound = 0
+                        if os.path.isfile(output_path + "/dssp/" + filesInDir[d].split('.')[0] + ".dssp"):
+                            with open(output_path + "/dssp/" + filesInDir[d].split('.')[0] + ".dssp") as fp:
+                                line = fp.readline()
+                                cntLn = 0 ##line counter##
+                                
+                                residue="#"
+                                while line: ##reading each line##
+                                    line = fp.readline()
+                                    if (cntLn<1):
+                                        if (line[2:(2+len(residue))] == residue):
+                                            cntLn+=1
+                                            continue
+                                        
+                                    if (cntLn>0):
+                                        if (len(line)>0):
+                                            if(line[13:(13+1)].isalpha()):
+                                                ssSeq = line[16:(16+1)]
+                                                saSeq = line[35:(35+3)].strip()
+                                                aaSeqNo = line[6:(6+4)].strip()
+                                                aaSeq = line[13:(13+1)]
+                                                dsspPhi = float(line[103:(103+6)])
+                                                dsspPsi = float(line[109:(109+6)])
+                                                ##8 to 3 state conversion
+                                                #ss.append(get8to3ss(ssSeq))
+                                                #if the residue numbers match
+                                                if(int(aaSeqNo) == residueList[r]):
+                                                    ss = self.get8to3ss(ssSeq)
+                                                    sa = saSeq
+                                                    aa = aaSeq
+                                                    dsspResFound = 1
+                                                    break
+                                                
+                        #agreement between spd3 and dssp (parse dssp file)
+                        spdSS = ""
+                        spdSA = ""
+                        spdAA = ""
+                        spdResFound = 0
+                        for spd in range(len(spd3Lines)):
+                            spdSeqNo = spd3Lines[spd][0:(0+3)]
+                            #if the residue numbers match
+                            if(int(spdSeqNo) == residueList[r]):
+                                spdSS = spd3Lines[spd][6:(6+1)]
+                                spdSA = spd3Lines[spd][8:(8+5)]
+                                spdAA = spd3Lines[spd][4:(4+1)]
+                                spdPhi = float(spd3Lines[spd][14:(14+6)])
+                                spdPsi = float(spd3Lines[spd][21:(21+6)])
+                                feat_max_prob = max(float(spd3Lines[spd][52:(52+5)]), float(spd3Lines[spd][58:(58+5)]), float(spd3Lines[spd][64:(64+5)]))
+                                spdResFound = 1
+                                break
 
-                    #----for testing purpose------#
-                    #print(str(residueList[r]) + " " + targets[i] + "/" + filesInDir[d].split('.')[0])
-                    #print(comp_feature)
-                    #-----------------------------#
-                    if(len(comp_feature.split()) == 15):
-                        outputFeat.write(comp_feature + "\n")
+                        if(dsspResFound == 1 and spdResFound == 1):
+                            if(spdSS == ss):
+                                feat_ss = "1"
+                            else:
+                                feat_ss = "0"
+
+                            #squared error
+                            feat_sa = pow(self.get_rsa(spdAA, spdSA) - self.get_rsa(aa, sa), 2)
+                            #------ROSETTA energy terms-----#
+                            #                               #
+                            #-------------------------------#
+                            if os.path.isfile(output_path + "/rosetta/" + filesInDir[d].split('.')[0] + ".rosetta"):
+                                with open(output_path + "/rosetta/" + filesInDir[d].split('.')[0] + ".rosetta") as rosFile:
+                                    for line in rosFile:
+                                        tmpRos = line.split()
+                                        if(len(tmpRos) > 0):
+                                            if(int(tmpRos[0]) == residueList[r]):
+                                                for ros in range(1, 13):
+                                                    feat_rosetta += str(self.sigmoid(float(tmpRos[ros]))) + " "
+                                                break        
+
+                        comp_feature = str(feat_pssm) + " " + str(feat_ss) + " " + str(feat_sa) + " " + str(feat_rosetta)
+
+                        #----for testing purpose------#
+                        #print(str(residueList[r]) + " " + targets[i] + "/" + filesInDir[d].split('.')[0])
+                        #print(comp_feature)
+                        #-----------------------------#
+                        if(len(comp_feature.split()) == 15):
+                            outputFeat.write(comp_feature + "\n")
+                            
+                            tmp_residue_list.append(residueList[r])
+
+                            #---------angular RMSD--------#
+                            #                             #  
+                            #-----------------------------#
+                            del_phi1 = abs(dsspPhi - spdPhi)
+                            del_phi2 = (2 * math.pi) - (abs(dsspPhi - spdPhi))
+                            del_phi_min = math.pow(min(del_phi1, del_phi2), 2)
+                            total_phi = total_phi + del_phi_min
+
+                            del_psi1 = abs(dsspPsi - spdPsi)
+                            del_psi2 = (2 * math.pi) - (abs(dsspPsi - spdPsi))
+                            del_psi_min = math.pow(min(del_psi1, del_psi2), 2)
+                            total_psi = total_psi + del_psi_min
+                            total_feat_res += 1
+                            #-----------------------------#
                         
-                        tmp_residue_list.append(residueList[r])
+                        else:
+                            total_failed_decoy += 1
+                            failed_decoy.write(filesInDir[d] + '\n')
+                    if(total_feat_res > 0):
+                        angular_rmsd_phi = float(math.sqrt(total_phi / total_feat_res))
+                        angular_rmsd_psi = float(math.sqrt(total_psi / total_feat_res))
 
-                        #---------angular RMSD--------#
-                        #                             #  
-                        #-----------------------------#
-                        del_phi1 = abs(dsspPhi - spdPhi)
-                        del_phi2 = (2 * math.pi) - (abs(dsspPhi - spdPhi))
-                        del_phi_min = math.pow(min(del_phi1, del_phi2), 2)
-                        total_phi = total_phi + del_phi_min
+                        angular_rmsd_norm_phi = 1 / (1 + math.pow(((angular_rmsd_phi / (math.pi / 4))), 2))
+                        angular_rmsd_norm_psi = 1 / (1 + math.pow(((angular_rmsd_psi / (math.pi / 4))), 2))
+                    outputFeat.close()
 
-                        del_psi1 = abs(dsspPsi - spdPsi)
-                        del_psi2 = (2 * math.pi) - (abs(dsspPsi - spdPsi))
-                        del_psi_min = math.pow(min(del_psi1, del_psi2), 2)
-                        total_psi = total_psi + del_psi_min
-                        total_feat_res += 1
-                        #-----------------------------#
-                    
-                    else:
-                        total_failed_decoy += 1
-                        failed_decoy.write(filesInDir[d] + '\n')
-                if(total_feat_res > 0):
-                    angular_rmsd_phi = float(math.sqrt(total_phi / total_feat_res))
-                    angular_rmsd_psi = float(math.sqrt(total_psi / total_feat_res))
+                    #--------open file to add angular rmsd feat------------#
+                    #                                                      #
+                    #------------------------------------------------------#
+                    with open(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat") as featFile:
+                        lines = []
+                        for line in featFile:
+                            tmp = line.split()
+                            if(len(tmp) > 0):
+                                lines.append(line)
 
-                    angular_rmsd_norm_phi = 1 / (1 + math.pow(((angular_rmsd_phi / (math.pi / 4))), 2))
-                    angular_rmsd_norm_psi = 1 / (1 + math.pow(((angular_rmsd_psi / (math.pi / 4))), 2))
-                outputFeat.close()
+                    outputFeat = open(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat", "w")
+                    for af in range(len(lines)):
+                        temp_l = lines[af].split()
+                        finalFeat = str(temp_l[0] + " " + temp_l[1] + " " + temp_l[2] + " " + temp_l[3] + " " + temp_l[4] + " " + temp_l[5] + " " + temp_l[6] + " "
+                        + temp_l[7] + " " + temp_l[8] + " " + temp_l[9] + " " + temp_l[10] + " " + temp_l[11] + " " + temp_l[12] + " " + temp_l[13] + " "
+                        + temp_l[14] + " " +  str(angular_rmsd_norm_phi) + " " + str(angular_rmsd_norm_psi) + " " + str(cmo_score_6) + " " + str(cmo_score_8) + " " 
+                        + str(cmo_score_10) + " " + str(cmo_score_12) + " " + str(cmo_score_14) + " " +  str(noOfEffSeq))
 
-                #--------open file to add angular rmsd feat------------#
-                #                                                      #
-                #------------------------------------------------------#
-                with open(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat") as featFile:
-                    lines = []
-                    for line in featFile:
-                        tmp = line.split()
-                        if(len(tmp) > 0):
-                            lines.append(line)
+                        if(len(finalFeat.split()) == 23):
 
-                outputFeat = open(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat", "w")
-                for af in range(len(lines)):
-                    temp_l = lines[af].split()
-                    finalFeat = str(temp_l[0] + " " + temp_l[1] + " " + temp_l[2] + " " + temp_l[3] + " " + temp_l[4] + " " + temp_l[5] + " " + temp_l[6] + " "
-                    + temp_l[7] + " " + temp_l[8] + " " + temp_l[9] + " " + temp_l[10] + " " + temp_l[11] + " " + temp_l[12] + " " + temp_l[13] + " "
-                    + temp_l[14] + " " +  str(angular_rmsd_norm_phi) + " " + str(angular_rmsd_norm_psi) + " " + str(cmo_score_6) + " " + str(cmo_score_8) + " " 
-                    + str(cmo_score_10) + " " + str(cmo_score_12) + " " + str(cmo_score_14) + " " +  str(noOfEffSeq))
+                            outputFeat.write(finalFeat + "\n")
+                    outputFeat.close()
 
-                    if(len(finalFeat.split()) == 23):
+                    residue_list_out = open(output_path + "/residue_list/" + filesInDir[d].split('.')[0] + ".resList", 'w')
+                    for res in range(len(tmp_residue_list)):
+                        residue_list_out.write(str(tmp_residue_list[res]) + '\n')
 
-                        outputFeat.write(finalFeat + "\n")
-                outputFeat.close()
-
-                residue_list_out = open(output_path + "/residue_list/" + filesInDir[d].split('.')[0] + ".resList", 'w')
-                for res in range(len(tmp_residue_list)):
-                    residue_list_out.write(str(tmp_residue_list[res]) + '\n')
-
-                #error checking: if the file is empty, then remove it#
-                if(os.stat(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat").st_size == 0):
-                    print(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat" + " is empty. Removing...")
-                    os.system("rm " + output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat")
+                    #error checking: if the file is empty, then remove it#
+                    if(os.stat(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat").st_size == 0):
+                        print(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat" + " is empty. Removing...")
+                        os.system("rm " + output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat")
 
         #----------------------------------Step 2:load and save models-------------------------------------------------#
         #                                                                                                              #
