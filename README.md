@@ -113,11 +113,6 @@ A detailed explanation for each of the options are provided below<br/>
 * --gpu device_id: If you want to use GPU for prediction, please use this flag and specify the device ID.
 * --out output location: Please select a location for the output to be stored. It is recommended that you specify a directory name for the output.
 
-<!-- LICENSE -->
-## License
+## CITE
 
-Distributed under the GPL 3.0 License. See <a href="https://github.com/Bhattacharya-Lab/QDeep/blob/master/LICENSE">`LICENSE`</a> for more information.
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* Alabama Supercomputer Authority
+If you find QDeep useful, please cite our paper
