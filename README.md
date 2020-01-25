@@ -3,12 +3,7 @@
 <h1 align = "center">QDeep</h2>
   </a>
 
-  <h2 align="center">Distance-based protein model quality estimation by residue-level ensemble error classifications with stacked deep residual neural networks</h2>
-  <p align="center">Md Hossain Shuvo (mzs0149@auburn.edu)<br/>
-  Sutanu Bhattacharya (szb0134@auburn.edu)<br/>
-  Debswapna Bhattacharya (bhattacharyad@auburn.edu)<br/>
-  Last updated: 1/20/2020</p><br/>
-</p>
+  <h2 align="center">QDeep: distance-based protein model quality estimation by residue-level ensemble error classifications using stacked deep residual neural networks</h2>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -21,14 +16,14 @@
 
 ## Getting Started
 
-You can run QDeep via the <a href="http://watson.cse.eng.auburn.edu/QDeep">QDeep web server</a> to score a single protein model at a time. But if you need to evaluate a pool of models at a time, we strongly recommend that you download and run the tool locally on the Linux system using the following procedures. Download QDeep:
+QDeep can be downloaded by typing
 ```
 $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 ```
 
 ### Prerequisites
 
-1. Linux system: QDeep is tested on x86_64 redhat linux system. Currently, QDeep is not supported on Windows or Mac
+1. Linux system: QDeep is tested on x86_64 CentOs Linux 7 system. Currently, QDeep is not supported on Windows or Mac
 2. python 3.6 or newer <br/>
 3. tensorflow 1.13.1 or newer <br/>
 4. keras 2.3.1 or newer <br/>
@@ -59,33 +54,33 @@ $ python QDeep.py
 ```
 You will see the following output
 ```
-**********************************************************************
-*                            QDeep                                   *
-*        Protein sinlge-model quality assessment using ResNet        *
-*       For comments, please email to bhattacharyad@auburn.edu       *
-**********************************************************************
-usage: QDeep.py [-h] [--tar TARGET_NAME] [--fas FASTA_FILE] [--dec DECOY_DIR]
+***************************************************************************
+*                               QDeep                                     *
+*   Distance-based protein model quality estimation using deep ResNets    *
+*          For comments, please email to bhattacharyad@auburn.edu         *
+***************************************************************************
+usage: QDeep.py [-h] [--tar TARGET_NAME] [--seq SEQ_FILE] [--dcy DECOY_DIR]
                 [--aln ALN_FILE] [--dist DISTANCE_FILE] [--pssm PSSM_FILE]
-                [--spd SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]
+                [--spd3 SPD33_FILE] [--msa YES] [--gpu DEVICE_ID]
                 [--out OUTPUT_PATH]
 
 Arguments:
   -h, --help            show this help message and exit
   --tar TARGET_NAME     Target name
-  --fas FASTA_FILE      Fasta file
-  --dec DECOY_DIR       Decoy directory
-  --aln ALN_FILE        Multiple Sequence Alignment
+  --seq SEQ_FILE        Sequence file
+  --dcy DECOY_DIR       Decoy directory
+  --aln ALN_FILE        Multiple sequence alignment
   --dist DISTANCE_FILE  DMPfold predicted distance
   --pssm PSSM_FILE      PSSM file
-  --spd SPD33_FILE      SPIDER3 output (.spd3)
+  --spd3 SPD33_FILE     SPIDER3 output (.spd3)
   --msa YES             yes|no Whether to use deep MSA (default: no)
   --gpu DEVICE_ID       device id (0/1/2/3/4/..) Whether to run on GPU
                         (default: CPU)
   --out OUTPUT_PATH     output directory name
 ```
 <b>Example commands to run QDeep</b><br/><br/>
-QDeep can be run with both shallow and deep MSA.</br>
-* To run QDeep with shallow MSA, type
+QDeep can be run with both standard and deep MSA.</br>
+* To run QDeep with standard MSA, type
 ```
 $ cd QDeep
 $ python QDeep.py --tar T0865 --fas example/T0865.fasta --dec example/T0865 --aln example/T0865.aln --dist example/rawdistpred.current --pssm example/T0865.pssm --spd example/T0865.spd33 --out T0865
