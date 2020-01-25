@@ -18,7 +18,7 @@ from tensorflow.keras.models import model_from_json
 features = []
 finalFeatures = []
 window_size = 0
-fasta_length = 0
+seq_length = 0
 
 print('\n***************************************************************************')
 print('*                               QDeep                                     *')
@@ -30,12 +30,16 @@ print('*************************************************************************
 #Configures before the first use                                #
 #---------------------------------------------------------------#
 
-configured = 1
-if(configured == 0):
-	print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ python configure.py\n")
-	exit(1)
-qDeep_path = '/home/project/scoreDml/resNet/new_version/multiple_thresholds/tools/app/'
-
+qDeep_path = 'change/to/your/current/directory'
+configured = 0
+if(configured == 0 or not os.path.exists(qDeep_path + 'apps/aleigen') or
+	not os.path.exists(qDeep_path + 'apps/aleigen') or
+	not os.path.exists(qDeep_path + 'apps/calNf_ly') or
+	not os.path.exists(qDeep_path + 'apps/dssp') or
+	not os.path.exists(qDeep_path + 'scripts/pdb2rr.pl') or
+	not os.path.exists(qDeep_path + 'scripts/ros_energy.py')):
+        print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ python configure.py\n")
+        exit(1)
 #------------------------arguments------------------------------#
 #Shows help to the users                                        #
 #---------------------------------------------------------------#
@@ -88,7 +92,7 @@ if len(sys.argv) < 8:
 
 options = parser.parse_args()
 
-fasta_file = options.fasta_file
+seq_file = options.seq_file
 target_name = options.target_name
 decoy_dir = options.decoy_dir
 aln_file = options.aln_file
@@ -148,13 +152,13 @@ class QDeep():
         #---------------------------------------------------------------#
         def __init__(self, target):
                 self.target_name = target
-                self.fasta_length = 0
+                self.seq_length = 0
                 
         #------------------------check option---------------------------#
         #checks whether all args are passed                             #
         #---------------------------------------------------------------#
         def check_options(self):
-                if (fasta_file != "" and target_name != "" and decoy_dir != "" and 
+                if (seq_file != "" and target_name != "" and decoy_dir != "" and 
                         aln_file != "" and pssm_file != "" and spd3_file != "" and 
                         dist_file != "" and output_path != ""):
                         return True
@@ -167,20 +171,20 @@ class QDeep():
         def contains_number(self, str):
                 return any(char.isdigit() for char in str)
 
-        #------------validate fasta----------------#
+        #-------validate sequence file-----------#
         #Invalid if the file does not exist
         #Invalid if the file is empty
         #Invalid if the sequence cotains any digit
-        def validate_fasta(self, fasta_file):
-                if(os.path.exists(fasta_file)):
-                        with open(fasta_file) as fFile:
+        def validate_seq(self, seq_file):
+                if(os.path.exists(seq_file)):
+                        with open(seq_file) as fFile:
                                 counter = 0
                                 for line in fFile:
                                         tmp = line.split()
                                         if(len(tmp) > 0 and self.contains_number(line) == False):
-                                                self.fasta_length = self.fasta_length + len(line.strip())
+                                                self.seq_length = self.seq_length + len(line.strip())
                                                 counter += 1
-                                if(self.fasta_length > 0):
+                                if(self.seq_length > 0):
                                         return True
                                 else:
                                         return False
@@ -220,7 +224,7 @@ class QDeep():
         #Invalid if the aln cotains any digit
         #Invalid if the aln file contains any empty line
         #Invalid if any of the alns length do not match
-        #the fasta length
+        #the seq length
         def validate_aln(self, aln_file):
                 valid = False
                 if(os.path.exists(aln_file)):
@@ -228,7 +232,7 @@ class QDeep():
                                 for line in fFile:
                                         tmp = line.split()
                                         if(len(tmp) > 0 and self.contains_number(line) == False and
-                                               len(line.strip()) == self.fasta_length):
+                                               len(line.strip()) == self.seq_length):
                                                 valid = True
                                         else:
                                                 valid = False
@@ -240,7 +244,7 @@ class QDeep():
         #Invalid if the file is empty
         #Invalid if the aln file contains any empty line
         #Invalid if the line length < | > 22
-        #Invalid if any residue number > fasta_length
+        #Invalid if any residue number > seq_length
         def validate_dist(self, dist_file):
                 valid = False
                 if(os.path.exists(dist_file)):
@@ -248,8 +252,8 @@ class QDeep():
                                 for line in fFile:
                                         tmp = line.split()
                                         if(len(tmp) > 0 and len(tmp) == 22 and
-                                               int(tmp[0]) <= self.fasta_length and
-                                                int(tmp[1]) <= self.fasta_length):
+                                               int(tmp[0]) <= self.seq_length and
+                                                int(tmp[1]) <= self.seq_length):
                                                 valid = True
                                         else:
                                                 valid = False
@@ -480,8 +484,8 @@ class QDeep():
 
                 out_file = open(self.target_name + '_6.rr', 'w')
                 os.chdir(working_path)
-                #open fasta to get the number of residue#
-                with open(fasta_file) as fa_file:
+                #open seq to get the number of residue#
+                with open(seq_file) as fa_file:
                         for line in fa_file:
                                 length = line.split()[-2]
                                 break;                                                                                                                                                                                                              
@@ -544,9 +548,9 @@ class QDeep():
 
                 outFile = open(self.target_name + '_8.rr', 'w')
 
-                #open fasta to get the number of residue#
+                #open sequence file to get the number of residue#
                 os.chdir(working_path)
-                with open(fasta_file) as fa_file:
+                with open(seq_file) as fa_file:
                         for line in fa_file:
                                 length = line.split()[-2]
                                 break;
@@ -607,9 +611,9 @@ class QDeep():
 
                 out_file = open(self.target_name + '_10.rr', 'w')
 
-                #open fasta to get the number of residue#
+                #open seq to get the number of residue#
                 os.chdir(working_path)
-                with open(fasta_file) as fa_file:
+                with open(seq_file) as fa_file:
                         for line in fa_file:
                                 length = line.split()[-2]
                                 break;
@@ -671,9 +675,9 @@ class QDeep():
 
                 out_file = open(self.target_name + '_12.rr', 'w')
 
-                #open fasta to get the number of residue#
+                #open seq to get the number of residue#
                 os.chdir(working_path)
-                with open(fasta_file) as fa_file:
+                with open(seq_file) as fa_file:
                         for line in fa_file:
                                 length = line.split()[-2]
                                 break;
@@ -736,9 +740,9 @@ class QDeep():
 
                 out_file = open(self.target_name + '_14.rr', 'w')
 
-                #open fasta to get the number of residue#
+                #open seq to get the number of residue#
                 os.chdir(working_path)
-                with open(fasta_file) as fa_file:
+                with open(seq_file) as fa_file:
                         for line in fa_file:
                                 length = line.split()[-2]
                                 break;
@@ -1282,10 +1286,10 @@ def main():
                       '#                                            #\n' +
                       '#--------------------------------------------#')
                 
-                if(q.validate_fasta(fasta_file) == True):
-                        print('Checking fasta file: OK')
+                if(q.validate_seq(seq_file) == True):
+                        print('Checking sequence file: OK')
                 else:
-                        print('Error: Please check the fasta file')
+                        print('Error: Please check the sequence file')
                         exit()
                         
                 if(q.validate_aln(aln_file) == True):
