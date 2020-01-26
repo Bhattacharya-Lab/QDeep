@@ -11,7 +11,7 @@ import os, sys, math, time
 import argparse, subprocess
 import numpy as np
 from tensorflow.keras.models import model_from_json
-
+start_time = time.time()
 #----------------------global variables-------------------------#
 #                                                               #
 #---------------------------------------------------------------#
@@ -19,7 +19,6 @@ features = []
 finalFeatures = []
 window_size = 0
 seq_length = 0
-start_time = time.time()
 
 print('\n***************************************************************************')
 print('*                               QDeep                                     *')
@@ -1350,6 +1349,8 @@ def main():
                 q.score()
                 q.sort_scores()
                 print('\nCongratulations! All process are successfully done!')
+                end_time = datetime.now() #calculate execution time
+                print('Total processing time: {}'.format(end_time - start_time))
                 print('See QDeep out: ' + output_path + '/' + target_name + '.QDeep\n')
     
         else:
