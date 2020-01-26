@@ -7,7 +7,7 @@
 # Modified by: 
 # Change log:
 #######################################################################################################
-import os, sys, math
+import os, sys, math, time
 import argparse, subprocess
 import numpy as np
 from tensorflow.keras.models import model_from_json
@@ -19,6 +19,7 @@ features = []
 finalFeatures = []
 window_size = 0
 seq_length = 0
+start_time = time.time()
 
 print('\n***************************************************************************')
 print('*                               QDeep                                     *')
@@ -30,16 +31,12 @@ print('*************************************************************************
 #Configures before the first use                                #
 #---------------------------------------------------------------#
 
-qDeep_path = 'change/to/your/current/directory'
-configured = 0
-if(configured == 0 or not os.path.exists(qDeep_path + 'apps/aleigen') or
-	not os.path.exists(qDeep_path + 'apps/aleigen') or
-	not os.path.exists(qDeep_path + 'apps/calNf_ly') or
-	not os.path.exists(qDeep_path + 'apps/dssp') or
-	not os.path.exists(qDeep_path + 'scripts/pdb2rr.pl') or
-	not os.path.exists(qDeep_path + 'scripts/ros_energy.py')):
-        print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ python configure.py\n")
-        exit(1)
+configured = 1
+if(configured == 0):
+	print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ python configure.py\n")
+	exit(1)
+qDeep_path = '/home/project/scoreDml/resNet/new_version/multiple_thresholds/tools/app/'
+
 #------------------------arguments------------------------------#
 #Shows help to the users                                        #
 #---------------------------------------------------------------#
@@ -347,7 +344,7 @@ class QDeep():
         #---------------------------------------------------------------#
         def get_neff(self):
                 neff = 0
-                with open(output_path + '/neff/' + output_path + '.neff') as n_file:
+                with open(output_path + '/neff/' + self.target_name + '.neff') as n_file:
                         for line in n_file:
                                 tmp = line.split()
                                 if(len(tmp) > 0):
