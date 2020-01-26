@@ -31,8 +31,12 @@ print('*************************************************************************
 #Configures before the first use                                #
 #---------------------------------------------------------------#
 
-configured = 1
-if(configured == 0):
+configured = 0
+if(configured == 0 or not os.path.exists(qDeep_path + '/apps/aleigen') or
+           not os.path.exists(qDeep_path + '/apps/calNf_ly') or
+           not os.path.exists(qDeep_path + '/apps/dssp') or
+           not os.path.exists(qDeep_path + '/scripts/pdb2rr.pl') or
+           not os.path.exists(qDeep_path + '/scripts/ros_energy.py')):
 	print("\nError: not yet configured!\nPlease configure as follows\n$ cd QDeep\n$ python configure.py\n")
 	exit(1)
 qDeep_path = 'change/to/your/current/directory'
