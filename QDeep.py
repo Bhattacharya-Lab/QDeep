@@ -1351,7 +1351,7 @@ def main():
                 q.sort_scores()
                 print('\nCongratulations! All process are successfully done!')
                 end_time = datetime.now() #calculate execution time
-                print('Total processing time: {}'.format(end_time - start_time))
+                print('Total processing time: ' + str(format(end_time - start_time)))
                 print('See QDeep out: ' + output_path + '/' + target_name + '.QDeep\n')
     
         else:
