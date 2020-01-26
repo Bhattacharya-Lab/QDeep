@@ -11,8 +11,8 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
-* [License](#license)
-* [Acknowledgements](#acknowledgements)
+* [Data](#license)
+* [Cite](#acknowledgements)
 
 ## Getting Started
 
