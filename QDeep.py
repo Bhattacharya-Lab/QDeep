@@ -1196,7 +1196,7 @@ class QDeep():
                 #--------------------------------------------------------------------------------------------------------------#
                 if not os.path.isdir(output_path + "/prediction"):
                     os.makedirs(output_path + "/prediction")
-                score_file = open(output_path + "/" + self.target_name + ".score", "w")
+                score_file = open(output_path + "/" + self.target_name + ".QDeep", "w")
                 score_file.write("Model       GDT-TS       GDT_HA\n")
                 for file in os.listdir(output_path + "/features/"):
                     if(file.endswith(".feat") and os.stat(output_path + "/features/" + file).st_size != 0):
@@ -1266,7 +1266,7 @@ class QDeep():
         #---------------------------------------------------------------#
         def sort_scores(self):
                 #sort the score file#
-                with open(output_path + "/" + target_name + ".score") as sFile:
+                with open(output_path + "/" + target_name + ".QDeep") as sFile:
                     lines = []
                     c = 0
                     for line in sFile:
