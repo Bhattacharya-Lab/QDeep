@@ -40,7 +40,15 @@ def get_unique_list(in_list):
 decoys = os.listdir(decoy_dir)
 
 for i in range(len(decoys)):
-        if(decoys[i].endswith('.pdb')):
+        dec_res_list=[]
+        dec_res_no = []
+        with open(decoy_dir + "/" + file) as dFile:
+                for line in dFile: 
+                        if(line[0:(0+4)]=="ATOM"):
+                                dec_res_no.append(line[22:(22+4)])
+        dec_res_list=sorted((self.get_unique_list(dec_res_no)))
+        if(len(dec_res_list) > 0):
+        #if(decoys[i].endswith('.pdb')):
                 residueList=[]        
                 start_end_ResNo = []    
                 with open(decoy_dir + '/' + decoys[i]) as file:        
