@@ -118,7 +118,7 @@ A detailed explanation for each of the options are provided below<br/>
 2. <a href = "">Download</a> data for calculating AUC to measure the performance of decoy selection
 3. <a href = "">Download</a> data for measuring the performance of individual predictors at 1, 2, 4 and 8A thresholds
 4. <a href = "">Download</a> the prediction of QDeep using standard alignment
-5. <a href = "">Download</a> the prediction of QDeep using deep alignment
+5. <a href = "">Download</a> the prediction of QDeep using deep alignment</br>
 Please refer to the <a href="#">readme.txt</a> for more information about the file description.
 
 ## Cite
