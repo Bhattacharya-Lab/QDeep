@@ -3,7 +3,7 @@
 <h1 align = "center">QDeep</h2>
   </a>
 
-  <h2 align="center">QDeep: distance-based protein model quality estimation by residue-level ensemble error classifications using stacked deep residual neural networks</h2>
+  <h3 align="center">Distance-based protein model quality estimation using deep ResNets</h3>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
