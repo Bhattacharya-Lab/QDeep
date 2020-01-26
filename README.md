@@ -98,9 +98,9 @@ $ python QDeep.py --tgt T0865 --seq example/QDeep_standard/T0865.fasta --dcy exa
 ```
 
 A detailed explanation for each of the options are provided below<br/>
-* --tar Target name: This should be the name of target without having any extension.<br/>
-* --fas Fasta file: This should contain the sequence with and without the header. The sequence may also expands to multiple lines in the fasta file<br/>
-* --dec Decoy directory: This requires a directory containing all the pdb models with .pdb extension.<br/>
+* --tgt Target name: This should be the name of target without having any extension.<br/>
+* --seq Sequence file: This should contain the sequence with and without the header. The sequence may also expands to multiple lines in the file<br/>
+* --dcy Decoy directory: This requires a directory containing all the pdb models with .pdb extension.<br/>
 * --aln Multiple Sequence Alignment file: The alignment file should be generated using HHblits with a query sequence coverage of 10% and pairwise sequence identity of 90% against uniclust30_2018_08 by three iterations with an E-value inclusion threshold of 10^-3. You can download HHblits from https://github.com/soedinglab/hh-suite.<br/>
 * --dist DMPfold predicted distance: To predict distance using DMPfold, you can download DMPfold from https://github.com/psipred/DMPfold<br/>
 * --pssm PSSM file: You can generate the sequence profile by searching the NR database using PSI-BLAST. You can download the PSI-BLAST from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/<br/>
@@ -110,7 +110,7 @@ A detailed explanation for each of the options are provided below<br/>
   * run SPIDER3 using deep MSA to predict secondary strcture and solvent accessibility 
   * predict distance using DMPfold using deep MSA
   
-* --gpu device_id: If you want to use GPU for prediction, please use this flag and specify the device ID.
+* --gpu device_id: If you want to use GPU for the prediction, please use this flag and specify the device ID.
 * --out output location: Please select a location for the output to be stored. It is recommended that you specify a directory name for the output.
 
 ## CITE
