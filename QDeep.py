@@ -192,7 +192,7 @@ class QDeep():
         #Invalid if dir not passed
         #Invalid if the dir does not exist
         #Invalid if the dir does not contain at least
-        #1 pdb file
+        #1 pdb file with ATOM records
         #Invalid if all the pdb files are empty
         def validate_dec_dir(self, decoy_dir):
             valid = False
@@ -201,16 +201,16 @@ class QDeep():
             if(os.path.isdir(decoy_dir)):
                     decoys = os.listdir(decoy_dir)
                     for i in range(len(decoys)):
-                            if(decoys[i].endswith('.pdb')):
-                                    dec_res_list=[]
-                                    dec_res_no = []
-                                    with open(decoy_dir + "/" + decoys[i]) as dFile:
-                                            for line in dFile: 
-                                                    if(line[0:(0+4)]=="ATOM"):
-                                                            dec_res_no.append(line[22:(22+4)])
-                                    dec_res_list=sorted((self.get_unique_list(dec_res_no)))
-                                    if(len(dec_res_list) > 0):
-                                            tot_decoy += 1
+                            #if(decoys[i].endswith('.pdb')):
+                            dec_res_list=[]
+                            dec_res_no = []
+                            with open(decoy_dir + "/" + decoys[i]) as dFile:
+                                    for line in dFile: 
+                                            if(line[0:(0+4)]=="ATOM"):
+                                                    dec_res_no.append(line[22:(22+4)])
+                            dec_res_list=sorted((self.get_unique_list(dec_res_no)))
+                            if(len(dec_res_list) > 0):
+                                    tot_decoy += 1
             if(tot_decoy > 0):
                     valid = True
             return valid                
