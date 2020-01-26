@@ -1,9 +1,5 @@
-<!-- TITLE -->
-<p align="center">
-<h1 align = "center">QDeep</h2>
-  </a>
-
-  <h3 align="center">Distance-based protein model quality estimation using deep ResNets</h3>
+# QDeep
+<h2>Distance-based protein model quality estimation using deep ResNets</h2>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
