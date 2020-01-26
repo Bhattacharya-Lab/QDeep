@@ -83,7 +83,7 @@ QDeep can be run with both standard and deep MSA.</br>
 * To run QDeep with standard MSA, type
 ```
 $ cd QDeep
-$ python QDeep.py --tgt T0865 --seq example/T0865.fasta --dcy example/T0865 --aln example/T0865.aln --dist example/rawdistpred.current --pssm example/T0865.pssm --spd3 example/T0865.spd33 --out T0865
+$ python QDeep.py --tgt T0865 --seq example/QDeep_standard/T0865.fasta --dcy example/QDeep_standard/T0865 --aln example/QDeep_standard/T0865.aln --dist example/QDeep_standard/rawdistpred.current --pssm example/QDeep_standard/T0865.pssm --spd3 example/QDeep_standard/T0865.spd33 --out T0865
 ```
    Please check the <a href="https://github.com/Bhattacharya-Lab/QDeep/blob/master/run.log">log</a> to match with your output for the above command.
 * To run QDeep with deep MSA, type
