@@ -42,7 +42,7 @@ decoys = os.listdir(decoy_dir)
 for i in range(len(decoys)):
         dec_res_list=[]
         dec_res_no = []
-        with open(decoy_dir + "/" + file) as dFile:
+        with open(decoy_dir + "/" + decoys[i]) as dFile:
                 for line in dFile: 
                         if(line[0:(0+4)]=="ATOM"):
                                 dec_res_no.append(line[22:(22+4)])
