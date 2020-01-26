@@ -1353,7 +1353,8 @@ def main():
                 q.generate_feature()
                 print('Total failed decoy: ' + str(total_failed_decoy))
                 print('Total file(s) to be scored: ' + str(tot_decoy - total_failed_decoy))
-                print('see failed decoy log: ' + output_path + '/failed_decoy.log')
+                if(total_failed_decoy > 0):
+                        print('see failed decoy log: ' + output_path + '/failed_decoy.log')
                 print('DONE!\n')
                 print('\n#-----------------Scoring--------------------#\n' +
                       '#                                            #\n' +
