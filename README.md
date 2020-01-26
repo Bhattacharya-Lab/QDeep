@@ -113,7 +113,7 @@ A detailed explanation for each of the options are provided below<br/>
 * --gpu device_id: If you want to use GPU for the prediction, please use this flag and specify the device ID.
 * --out output location: Please select a location for the output to be stored. It is recommended that you specify a directory name for the output.
 
-## Usage
+## Data
 1. Download data for
 2. Download data
 ## Cite
