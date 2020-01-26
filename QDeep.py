@@ -1352,9 +1352,9 @@ def main():
                 print('Finalizing feature generation...')
                 q.generate_feature()
                 print('Total failed decoy: ' + str(total_failed_decoy))
-                print('Total file(s) to be scored: ' + str(tot_decoy - total_failed_decoy))
                 if(total_failed_decoy > 0):
                         print('see failed decoy log: ' + output_path + '/failed_decoy.log')
+                print('Total file(s) to be scored: ' + str(tot_decoy - total_failed_decoy))
                 print('DONE!\n')
                 print('\n#-----------------Scoring--------------------#\n' +
                       '#                                            #\n' +
@@ -1363,7 +1363,8 @@ def main():
                 q.sort_scores()
                 print('\nCongratulations! All process are successfully done!')
                 end_time = datetime.now() #calculate execution time
-                print('Total processing time: ' + str(format(end_time - start_time)))
+                total_time = format(end_time - start_time)
+                print('Total processing time: ' + str(total_time))
                 print('See QDeep out: ' + output_path + '/' + target_name + '.QDeep\n')
     
         else:
