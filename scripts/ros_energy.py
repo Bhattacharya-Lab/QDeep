@@ -46,7 +46,7 @@ for i in range(len(decoys)):
                 for line in dFile: 
                         if(line[0:(0+4)]=="ATOM"):
                                 dec_res_no.append(line[22:(22+4)])
-        dec_res_list=sorted((self.get_unique_list(dec_res_no)))
+        dec_res_list=sorted((get_unique_list(dec_res_no)))
         if(len(dec_res_list) > 0):
         #if(decoys[i].endswith('.pdb')):
                 residueList=[]        
