@@ -325,8 +325,16 @@ class QDeep():
             filesInDir=[]
             for file in os.listdir(directory):
                     #getOnlyFileName=os.path.splitext(file.rsplit('.', 2)[0])[0]
-                    if(file.endswith(".pdb")):
-                            filesInDir.append(file)
+                            #if(decoys[i].endswith('.pdb')):
+                            dec_res_list=[]
+                            dec_res_no = []
+                            with open(decoy_dir + "/" + file) as dFile:
+                                    for line in dFile: 
+                                            if(line[0:(0+4)]=="ATOM"):
+                                                    dec_res_no.append(line[22:(22+4)])
+                            dec_res_list=sorted((self.get_unique_list(dec_res_no)))
+                            if(len(dec_res_list) > 0):
+                                    filesInDir.append(file)
             return filesInDir
                     
         #-----------------------run_dssp--------------------------------#
