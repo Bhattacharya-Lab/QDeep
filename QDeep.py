@@ -11,6 +11,7 @@ import os, sys, math, time
 import argparse, subprocess
 import numpy as np
 from tensorflow.keras.models import model_from_json
+from datetime import datetime
 start_time = time.time()
 #----------------------global variables-------------------------#
 #                                                               #
