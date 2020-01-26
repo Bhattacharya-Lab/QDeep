@@ -114,8 +114,13 @@ A detailed explanation for each of the options are provided below<br/>
 * --out output location: Please select a location for the output to be stored. It is recommended that you specify a directory name for the output.
 
 ## Data
-1. Download data for
-2. Download data
+1. <a href = "">Download</a> input data for running QDeep_standard and QDeep_deep on both CASP12 and CASP13 datasets.
+2. <a href = "">Download</a> data for calculating AUC to measure the performance of decoy selection
+3. <a href = "">Download</a> data for measuring the performance of individual predictors at 1, 2, 4 and 8A thresholds
+4. <a href = "">Download</a> the prediction of QDeep using standard alignment
+5. <a href = "">Download</a> the prediction of QDeep using deep alignment
+Please refer to the <a href="#">readme.txt</a> for more information about the file description.
+
 ## Cite
 
 If you find QDeep useful, please cite our paper
