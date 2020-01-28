@@ -1258,7 +1258,7 @@ class QDeep():
 
                         gdt_ts_pred = (frac_gdt_ts_1_0 + frac_gdt_ts_2_0 + frac_gdt_ts_4_0 + frac_gdt_ts_8_0) / 4.0
                         print(file.split('.')[0] + ": " + str(gdt_ts_pred))
-                        score_file.write(os.path.splitext(file.rsplit('.', 2)[0])[0] + "  " + str(gdt_ts_pred) +"\n")
+                        score_file.write(os.path.splitext(file.rsplit('.', 2)[0])[0] + " " + str(gdt_ts_pred) +"\n")
                 score_file.close()
         #----------------------Sort score file--------------------------#
         #purpose: takes the score file and sort in desc order           #
