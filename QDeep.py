@@ -72,7 +72,7 @@ parser.add_argument('--pssm', dest='pssm_file',
 
 parser.add_argument('--spd3', dest='spd33_file',
         default = '',    # default empty!
-        help = 'SPIDER3 output (.spd3)')
+        help = 'SPIDER3 output (.spd33)')
 
 parser.add_argument('--msa', dest='yes',
         default = 'no',    # default no!
@@ -80,11 +80,11 @@ parser.add_argument('--msa', dest='yes',
 
 parser.add_argument('--gpu', dest='device_id',
         default = '-1',    # default cpu!
-        help = 'device id (0/1/2/3/4/..) Whether to run on GPU (default: CPU)')
+        help = 'Device id (0/1/2/3/4/..) Whether to run on GPU (default: CPU)')
 
 parser.add_argument('--out', dest='output_path',
         default = '',    # default empty!
-        help = 'output directory name')
+        help = 'Output directory name')
 
 if len(sys.argv) < 8:
     parser.print_help(sys.stderr)
@@ -1284,8 +1284,8 @@ class QDeep():
 def main():
         #Create an instance of the class#
         q = QDeep(target_name)
-        print('Processing started for: ' + target_name)
         if(q.check_options() == True):
+		print('Processing started for: ' + target_name)
                 print('\n#-----------Validating input files-----------#\n' +
                       '#                                            #\n' +
                       '#--------------------------------------------#')
@@ -1361,7 +1361,7 @@ def main():
                 end_time = time.monotonic()
                 total_time = timedelta(seconds=end_time - start_time)
                 print('Total processing time: ' + str(total_time))
-                print('See QDeep out: ' + output_path + '/' + target_name + '.QDeep\n')
+                print('See QDeep output: ' + output_path + '/' + target_name + '.QDeep\n')
     
         else:
             print("Please check your command")
