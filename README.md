@@ -106,8 +106,8 @@ A detailed explanation for each of the options are provided below<br/>
   * run SPIDER3 using deep MSA to predict secondary strcture and solvent accessibility 
   * predict distance using DMPfold using deep MSA
   
-* --gpu device_id: If you want to use GPU for the prediction, please use this flag and specify the device ID.
-* --out output location: Please select a location for the output to be stored. It is recommended that you specify a directory name for the output.
+* --gpu Device ID: If you want to use GPU for the prediction, please use this flag and specify the device ID.
+* --out Output path: Please select a location for the output to be stored. It is recommended that you specify a directory name for the output.
 
 ## Data
 1. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/input_data.tar.gz">Download</a> input data for running QDeep with standard and deep alignmnets on both CASP12 and CASP13 datasets.
