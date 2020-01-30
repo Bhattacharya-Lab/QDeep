@@ -111,7 +111,6 @@ A detailed explanation for each of the options are provided below<br/>
 
 ## Data
 1. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/input_data.tar.gz">Download</a> input data for running QDeep with standard and deep alignmnets on both CASP12 and CASP13 datasets.
-<!--2. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/validation_indv_predictors.tar.gz">Download</a> performance validation of individual residue-level predictors at 1, 2, 4 and 8A error thresholds on CASP11 set.-->
 2. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/QDeep_standard.tar.gz">Download</a> QDeep predictions for CASP12 and CASP13 targets using standard alignments.
 3. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/QDeep_deep.tar.gz">Download</a> QDeep predictions for CASP12 and CASP13 taregts using deep alignments.</br>
 Please refer to the <a href="http://sanger.cse.eng.auburn.edu/QDeep/downloads/readme.txt">readme.txt</a> for more information about the file formats.
