@@ -1285,7 +1285,8 @@ def main():
         #Create an instance of the class#
         q = QDeep(target_name)
         if(q.check_options() == True):
-		print('Processing started for: ' + target_name)
+
+                print('Processing started for: ' + target_name)
                 print('\n#-----------Validating input files-----------#\n' +
                       '#                                            #\n' +
                       '#--------------------------------------------#')
