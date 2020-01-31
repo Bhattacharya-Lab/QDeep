@@ -83,7 +83,7 @@ $ python QDeep.py --tgt T0865 --seq example/QDeep_standard/T0865.fasta --dcy exa
 $ cd QDeep
 $ python QDeep.py --tgt T0865 --seq example/QDeep_deep/T0865.fasta --dcy example/QDeep_deep/T0865 --aln example/QDeep_deep/T0865.aln --dist example/QDeep_deep/rawdistpred.current --pssm example/QDeep_deep/T0865.pssm --spd3 example/QDeep_deep/T0865.spd33 --msa yes --out T0865
 ```
-* For running QDeep, GPU is not required. However GPU may faster the prediction. To run QDeep with GPU, type
+* For running QDeep, GPU is not required. However GPU may speed up the prediction. To run QDeep with GPU, type
 ```
 $ cd QDeep
 $ python QDeep.py --tgt T0865 --seq example/QDeep_standard/T0865.fasta --dcy example/QDeep_standard/T0865 --aln example/QDeep_standard/T0865.aln --dist example/QDeep_standard/rawdistpred.current --pssm example/QDeep_standard/T0865.pssm --spd3 example/QDeep_standard/T0865.spd33 --gpu 0 --out T0865
