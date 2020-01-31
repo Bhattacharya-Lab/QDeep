@@ -19,7 +19,7 @@ $ git clone https://github.com/Bhattacharya-Lab/QDeep.git
 
 ### Prerequisites
 
-1. Linux system: QDeep is tested on x86_64 CentOs Linux 7 system. Currently, QDeep is not supported on Windows or Mac
+1. Linux system: QDeep is tested on x86_64 Linux system. Currently, QDeep is not supported on Windows or Mac
 2. python 3.6 or newer <br/>
 3. tensorflow 1.13.1 or newer <br/>
 4. keras 2.3.1 or newer <br/>
