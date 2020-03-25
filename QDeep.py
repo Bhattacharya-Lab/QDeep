@@ -30,8 +30,8 @@ print('*************************************************************************
 #------------------------configure------------------------------#
 #Configures before the first use                                #
 #---------------------------------------------------------------#
-configured = 0
-qDeep_path = 'change/to/your/current/directory'
+configured = 1
+qDeep_path = '/home/project/scoreDml/resNet/qdeep_review/testing/QDeep/'
 if(configured == 0 or not os.path.exists(qDeep_path + '/apps/aleigen') or
            not os.path.exists(qDeep_path + '/apps/calNf_ly') or
            not os.path.exists(qDeep_path + '/apps/dssp') or
@@ -177,17 +177,15 @@ class QDeep():
         #Invalid if the sequence cotains any digit
         def validate_seq(self, seq_file):
                 if(os.path.exists(seq_file)):
-                        with open(seq_file) as fFile:
-                                counter = 0
-                                for line in fFile:
-                                        tmp = line.split()
-                                        if(len(tmp) > 0 and self.contains_number(line) == False):
-                                                self.seq_length = self.seq_length + len(line.strip())
-                                                counter += 1
-                                if(self.seq_length > 0):
-                                        return True
-                                else:
-                                        return False
+                        f = open(seq_file, 'r')
+                        text = f.readlines()
+                        text = [line.strip() for line in text if not '>' in line]
+                        seqQ = ''.join( text )
+                        self.seq_length = len(seqQ)
+                        if(self.seq_length > 0):
+                                return True
+                        else:
+                                return False
                 else:
                         return False
 
@@ -493,15 +491,11 @@ class QDeep():
                 out_file = open(self.target_name + '_6.rr', 'w')
                 os.chdir(working_path)
                 #open seq to get the number of residue#
-                with open(seq_file) as fa_file:
-                        for line in fa_file:
-                                length = line.split()[-2]
-                                break;                                                                                                                                                                                                              
 
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
-                out_file.write(str(length) + '\n')
+                out_file.write(str(self.seq_length) + '\n')
                 for l in range(len(lines_pred)):
                         temp_l = lines_pred[l].split()
                         #--------change int. map threshold here---------#
@@ -558,14 +552,10 @@ class QDeep():
 
                 #open sequence file to get the number of residue#
                 os.chdir(working_path)
-                with open(seq_file) as fa_file:
-                        for line in fa_file:
-                                length = line.split()[-2]
-                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
-                outFile.write(str(length) + '\n')
+                outFile.write(str(self.seq_length) + '\n')
                 for l in range(len(lines_pred)):
                         temp_l = lines_pred[l].split()
                         #--------change int. map threshold here---------#
@@ -621,14 +611,10 @@ class QDeep():
 
                 #open seq to get the number of residue#
                 os.chdir(working_path)
-                with open(seq_file) as fa_file:
-                        for line in fa_file:
-                                length = line.split()[-2]
-                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
-                out_file.write(str(length) + '\n')
+                out_file.write(str(self.seq_length) + '\n')
                 for l in range(len(lines_pred)):
                         temp_l = lines_pred[l].split()
                         #--------change int. map threshold here---------#
@@ -685,14 +671,10 @@ class QDeep():
 
                 #open seq to get the number of residue#
                 os.chdir(working_path)
-                with open(seq_file) as fa_file:
-                        for line in fa_file:
-                                length = line.split()[-2]
-                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
-                out_file.write(str(length) + '\n')
+                out_file.write(str(self.seq_length) + '\n')
                 for l in range(len(lines_pred)):
                         temp_l = lines_pred[l].split()
                         #--------change int. map threshold here---------#
@@ -750,14 +732,10 @@ class QDeep():
 
                 #open seq to get the number of residue#
                 os.chdir(working_path)
-                with open(seq_file) as fa_file:
-                        for line in fa_file:
-                                length = line.split()[-2]
-                                break;
                 #write the length of the sequence
                 #write only the first two column
                 os.chdir(output_path + "/cmo")
-                out_file.write(str(length) + '\n')
+                out_file.write(str(self.seq_length) + '\n')
                 for l in range(len(lines_pred)):
                         temp_l = lines_pred[l].split()
                         #--------change int_map threshold here----------#
