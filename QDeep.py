@@ -219,44 +219,22 @@ class QDeep():
             
         #------------validate aln----------------#
         #Invalid if the file does not exist
-        #Invalid if the file is empty
-        #Invalid if the aln cotains any digit
-        #Invalid if the aln file contains any empty line
-        #Invalid if any of the alns length do not match
-        #the seq length
         def validate_aln(self, aln_file):
                 valid = False
                 if(os.path.exists(aln_file)):
-                        with open(aln_file) as fFile:
-                                for line in fFile:
-                                        tmp = line.split()
-                                        if(len(tmp) > 0 and self.contains_number(line) == False and
-                                               len(line.strip()) == self.seq_length):
-                                                valid = True
-                                        else:
-                                                valid = False
-                                                break
+                        valid = True
+                else:
+                        valid = False
                 return valid
-
+        
         #--------validate distance file----------#
         #Invalid if the file does not exist
-        #Invalid if the file is empty
-        #Invalid if the aln file contains any empty line
-        #Invalid if the line length < | > 22
-        #Invalid if any residue number > seq_length
         def validate_dist(self, dist_file):
                 valid = False
                 if(os.path.exists(dist_file)):
-                        with open(dist_file) as fFile:
-                                for line in fFile:
-                                        tmp = line.split()
-                                        if(len(tmp) > 0 and len(tmp) == 22 and
-                                               int(tmp[0]) <= self.seq_length and
-                                                int(tmp[1]) <= self.seq_length):
-                                                valid = True
-                                        else:
-                                                valid = False
-                                                break
+                        valid = True
+                else:
+                        valid = False
                 return valid
                         
         #----------validate PSSM file------------#
