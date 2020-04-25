@@ -31,7 +31,7 @@ print('*************************************************************************
 #Configures before the first use                                #
 #---------------------------------------------------------------#
 configured = 0
-qDeep_path = 'change/to/your/current/directory'
+qDeep_path = '/home/project/scoreDml/resNet/QDeep2/tools/GDT-TS/'
 if(configured == 0 or not os.path.exists(qDeep_path + '/apps/aleigen') or
            not os.path.exists(qDeep_path + '/apps/calNf_ly') or
            not os.path.exists(qDeep_path + '/apps/dssp') or
@@ -144,6 +144,7 @@ aleigen_path = qDeep_path + '/apps/aleigen'
 neff_path = qDeep_path + '/apps/calNf_ly'
 pdb2rr_path = qDeep_path + '/scripts/pdb2rr.pl'
 ros_script = qDeep_path + '/scripts/ros_energy.py'
+stride_path = qDeep_path + '/apps/stride'
 
 class QDeep():
 
@@ -334,7 +335,44 @@ class QDeep():
                             if(len(dec_res_list) > 0):
                                     filesInDir.append(file)
             return filesInDir
-                    
+
+        #----------------------run_dssp or strid------------------------#
+        #purpose: runs dssp or stride tool for generating SS and SA     #
+        #if DSSP failes, STRIDE will run                                #
+        #                                                               #
+        #---------------------------------------------------------------#
+        def run_dssp_stride(self):
+                files = []
+                files = self.read_files(decoy_dir)
+                if not os.path.isdir(output_path+"/dssp"):
+                        os.makedirs(output_path+"/dssp")
+
+                if not os.path.isdir(output_path+"/stride"):
+                        os.makedirs(output_path+"/stride")
+                        
+                for i in range(len(files)):
+                        dssp_ret_code = os.system(dssp_path +" -i " + decoy_dir + "/" + files[i] + " -o " + 
+                                output_path + "/dssp/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".dssp")
+
+                        if(dssp_ret_code != 0):
+                                print("DSSP failed to run. Running STRIDE for " + files[i])
+                                os.system(stride_path +" " + decoy_dir + "/" + files[i] + ">" + 
+                                        output_path + "/stride/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".stride")
+
+        '''
+        #-----------------------run_stride------------------------------#
+        #purpose: runs stride tool for generating SS and SA             #
+        #                                                               #
+        #---------------------------------------------------------------#
+        def run_stride(self):
+                files = []
+                files = self.read_files(decoy_dir)
+                if not os.path.isdir(output_path+"/stride"):
+                        os.makedirs(output_path+"/stride")
+                for i in range(len(files)):
+                        os.system(stride_path +" " + decoy_dir + "/" + files[i] + ">" + 
+                                output_path + "/stride/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".stride")
+        
         #-----------------------run_dssp--------------------------------#
         #purpose: runs dssp tool for generating SS and SA               #
         #                                                               #
@@ -347,6 +385,7 @@ class QDeep():
                 for i in range(len(files)):
                         os.system(dssp_path +" -i " + decoy_dir + "/" + files[i] + " -o " + 
                                 output_path + "/dssp/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".dssp")
+        '''
 
         #-----------------------get_neff--------------------------------#
         #purpose: calculate NEFF                                        #
