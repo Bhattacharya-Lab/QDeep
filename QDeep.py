@@ -30,7 +30,7 @@ print('*************************************************************************
 #------------------------configure------------------------------#
 #Configures before the first use                                #
 #---------------------------------------------------------------#
-configured = 0
+configured = 1
 qDeep_path = '/home/project/scoreDml/resNet/QDeep2/tools/GDT-TS/'
 if(configured == 0 or not os.path.exists(qDeep_path + '/apps/aleigen') or
            not os.path.exists(qDeep_path + '/apps/calNf_ly') or
@@ -140,11 +140,11 @@ if(gpu != ""):
 #                                                               #
 #---------------------------------------------------------------#
 dssp_path = qDeep_path + '/apps/dssp'
+stride_path = qDeep_path + '/apps/stride'
 aleigen_path = qDeep_path + '/apps/aleigen'
 neff_path = qDeep_path + '/apps/calNf_ly'
 pdb2rr_path = qDeep_path + '/scripts/pdb2rr.pl'
 ros_script = qDeep_path + '/scripts/ros_energy.py'
-stride_path = qDeep_path + '/apps/stride'
 
 class QDeep():
 
@@ -154,6 +154,7 @@ class QDeep():
         def __init__(self, target):
                 self.target_name = target
                 self.seq_length = 0
+                
                 
         #------------------------check option---------------------------#
         #checks whether all args are passed                             #
@@ -226,7 +227,7 @@ class QDeep():
                 else:
                         valid = False
                 return valid
-        
+
         #--------validate distance file----------#
         #Invalid if the file does not exist
         def validate_dist(self, dist_file):
@@ -313,7 +314,7 @@ class QDeep():
                             if(len(dec_res_list) > 0):
                                     filesInDir.append(file)
             return filesInDir
-
+                    
         #----------------------run_dssp or strid------------------------#
         #purpose: runs dssp or stride tool for generating SS and SA     #
         #if DSSP failes, STRIDE will run                                #
@@ -350,19 +351,6 @@ class QDeep():
                 for i in range(len(files)):
                         os.system(stride_path +" " + decoy_dir + "/" + files[i] + ">" + 
                                 output_path + "/stride/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".stride")
-        
-        #-----------------------run_dssp--------------------------------#
-        #purpose: runs dssp tool for generating SS and SA               #
-        #                                                               #
-        #---------------------------------------------------------------#
-        def run_dssp(self):
-                files = []
-                files = self.read_files(decoy_dir)
-                if not os.path.isdir(output_path+"/dssp"):
-                        os.makedirs(output_path+"/dssp")
-                for i in range(len(files)):
-                        os.system(dssp_path +" -i " + decoy_dir + "/" + files[i] + " -o " + 
-                                output_path + "/dssp/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".dssp")
         '''
 
         #-----------------------get_neff--------------------------------#
@@ -407,6 +395,17 @@ class QDeep():
                 else:
                         eTo3="C"
                 return eTo3
+
+        #------------------------get3to1aa------------------------------#
+        #purpose: converts 3 states AA to 1 states AA                   #
+        #---------------------------------------------------------------#
+        def get3to1aa(self, aa):
+            dict = {'CYS': 'C', 'ASP': 'D', 'SER': 'S', 'GLN': 'Q', 'LYS': 'K',
+                 'ILE': 'I', 'PRO': 'P', 'THR': 'T', 'PHE': 'F', 'ASN': 'N', 
+                 'GLY': 'G', 'HIS': 'H', 'LEU': 'L', 'ARG': 'R', 'TRP': 'W', 
+                 'ALA': 'A', 'VAL':'V', 'GLU': 'E', 'TYR': 'Y', 'MET': 'M'}
+
+            return dict[aa]
 
         #--------------------------get_rsa------------------------------#
         #purpose: extracts RSA                                          #
@@ -996,6 +995,7 @@ class QDeep():
                         sa=""
                         aa=""
 
+                        
                         #-------Process each DSSP-------#
                         #                               #
                         #-------------------------------#
@@ -1031,6 +1031,38 @@ class QDeep():
                                                     aa = aaSeq
                                                     dsspResFound = 1
                                                     break
+                        
+
+                        else:
+                        #------Process each stride------#
+                        #                               #
+                        #-------------------------------#
+                                dsspResFound = 0
+                                if os.path.isfile(output_path + "/stride/" + filesInDir[d].split('.')[0] + ".stride"):
+                                    with open(output_path + "/stride/" + filesInDir[d].split('.')[0] + ".stride") as fp:
+                                        line = fp.readline()
+                                        cntLn = 0 ##line counter##
+                                        
+                                        residue="Residue"
+                                        while line: ##reading each line##
+                                                line = fp.readline()
+                                                if (len(line)>0):
+                                                    if((line[0:(0+3)]) == "ASG"):
+                                                        ssSeq = line[24:(24+1)]
+                                                        saSeq = line[64:(64+5)].strip()
+                                                        aaSeqNo = line[11:(11+4)].strip()
+                                                        aaSeq = self.get3to1aa(line[5:(5+3)].strip())
+                                                        dsspPhi = float(line[42:(43+7)])
+                                                        dsspPsi = float(line[52:(53+7)])
+                                                        ##8 to 3 state conversion
+                                                        #ss.append(get8to3ss(ssSeq))
+                                                        #if the residue numbers match
+                                                        if(int(aaSeqNo) == residueList[r]):
+                                                            ss = self.get8to3ss(ssSeq)
+                                                            sa = saSeq
+                                                            aa = aaSeq
+                                                            dsspResFound = 1
+                                                            break
                                                 
                         #agreement between spd3 and dssp (parse dssp file)
                         spdSS = ""
@@ -1097,9 +1129,6 @@ class QDeep():
                             total_feat_res += 1
                             #-----------------------------#
                         
-                        else:
-                            total_failed_decoy += 1
-                            failed_decoy.write(filesInDir[d] + '\n')
                     if(total_feat_res > 0):
                         angular_rmsd_phi = float(math.sqrt(total_phi / total_feat_res))
                         angular_rmsd_psi = float(math.sqrt(total_psi / total_feat_res))
@@ -1139,6 +1168,10 @@ class QDeep():
                     if(os.stat(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat").st_size == 0):
                         print(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat" + " is empty. Removing...")
                         os.system("rm " + output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat")
+                        
+                        #writing failed decoy log#
+                        total_failed_decoy += 1
+                        failed_decoy.write(filesInDir[d] + '\n')
 
         #----------------------------------Step 2:load and save models-------------------------------------------------#
         #                                                                                                              #
@@ -1270,6 +1303,28 @@ class QDeep():
                 score_file = open(output_path + "/" + target_name + ".QDeep", 'w')
                 for line in sorted(lines, key=lambda line: float(line.split()[1]), reverse = True):
                     score_file.write(line)
+                score_file.close()
+
+        #----------------------add failed decoy-------------------------#
+        #purpose: add failed decoy to the score file if any             #
+        #---------------------------------------------------------------#
+        def add_failed_decoy(self):
+                #sort the score file#
+                with open(output_path + "/" + target_name + ".QDeep") as sFile:
+                    lines = []
+                    for line in sFile:
+                            tmp = line.split()
+                            if(len(tmp) > 0):
+                                    lines.append(line)
+
+                with open(output_path + "/" + "failed_decoy.log") as fFile:
+                    for line in fFile:
+                            if(len(tmp) > 0):
+                                    lines.append(line.rstrip() + ' X\n')
+
+                score_file = open(output_path + "/" + target_name + ".QDeep", 'w')
+                for s in range(len(lines)):
+                    score_file.write(lines[s])
                 score_file.close()
                         
                                         
