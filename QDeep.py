@@ -338,20 +338,6 @@ class QDeep():
                                 os.system(stride_path +" " + decoy_dir + "/" + files[i] + ">" + 
                                         output_path + "/stride/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".stride")
 
-        '''
-        #-----------------------run_stride------------------------------#
-        #purpose: runs stride tool for generating SS and SA             #
-        #                                                               #
-        #---------------------------------------------------------------#
-        def run_stride(self):
-                files = []
-                files = self.read_files(decoy_dir)
-                if not os.path.isdir(output_path+"/stride"):
-                        os.makedirs(output_path+"/stride")
-                for i in range(len(files)):
-                        os.system(stride_path +" " + decoy_dir + "/" + files[i] + ">" + 
-                                output_path + "/stride/" + os.path.splitext(files[i].rsplit('/', 1)[-1])[0] + ".stride")
-        '''
 
         #-----------------------get_neff--------------------------------#
         #purpose: calculate NEFF                                        #
