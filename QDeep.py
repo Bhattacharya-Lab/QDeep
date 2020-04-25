@@ -31,7 +31,7 @@ print('*************************************************************************
 #Configures before the first use                                #
 #---------------------------------------------------------------#
 configured = 1
-qDeep_path = '/home/project/scoreDml/resNet/QDeep2/tools/GDT-TS/'
+qDeep_path = 'change/to/your/current/directory'
 if(configured == 0 or not os.path.exists(qDeep_path + '/apps/aleigen') or
            not os.path.exists(qDeep_path + '/apps/calNf_ly') or
            not os.path.exists(qDeep_path + '/apps/dssp') or
