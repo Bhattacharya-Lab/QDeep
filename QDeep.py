@@ -1329,7 +1329,7 @@ def main():
                         os.makedirs(output_path)
 
                 print('Processing SS and SA...')
-                q.run_dssp()
+                q.run_dssp_stride()
                 print('DONE!\n')
                 print('Calculating energy terms...')
                 q.gen_energy_terms()
@@ -1353,6 +1353,8 @@ def main():
                       '#--------------------------------------------#')
                 q.score()
                 q.sort_scores()
+                if(total_failed_decoy > 0):
+                        q.add_failed_decoy()
                 print('\nCongratulations! All process are successfully done!')
                 end_time = time.monotonic()
                 total_time = timedelta(seconds=end_time - start_time)
