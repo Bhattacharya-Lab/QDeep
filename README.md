@@ -113,4 +113,4 @@ Please refer to the <a href="http://sanger.cse.eng.auburn.edu/QDeep/downloads/re
 
 ## Cite
 
-If you find QDeep useful, please cite our ISMB 2020 Proceedings paper <a href="https://www.biorxiv.org/content/10.1101/2020.01.31.928622v2">available as preprint</a>, which will soon be published in Bioinformatics.
+If you find QDeep useful, please cite our <a href="https://doi.org/10.1093/bioinformatics/btaa455">ISMB 2020 Proceedings paper</a> published in Bioinformatics.
