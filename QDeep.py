@@ -176,7 +176,7 @@ class QDeep():
         #-------validate sequence file-----------#
         #Invalid if the file does not exist
         #Invalid if the file is empty
-        #Invalid if the sequence cotains any digit
+        #Invalid if the sequence contains any digit
         def validate_seq(self, seq_file):
                 if(os.path.exists(seq_file)):
                         f = open(seq_file, 'r')
@@ -315,9 +315,9 @@ class QDeep():
                                     filesInDir.append(file)
             return filesInDir
                     
-        #----------------------run_dssp or strid------------------------#
+        #----------------------run_dssp or stride-----------------------#
         #purpose: runs dssp or stride tool for generating SS and SA     #
-        #if DSSP failes, STRIDE will run                                #
+        #if DSSP fails, STRIDE will run                                 #
         #                                                               #
         #---------------------------------------------------------------#
         def run_dssp_stride(self):
@@ -423,7 +423,7 @@ class QDeep():
                 ros_proc = subprocess.Popen('python -W ignore ' + ros_script + ' -d ' + decoy_dir +
                                   ' -o ' + output_path + "/rosetta > " + output_path + "/rosetta.log", shell=True).wait()
                 if(ros_proc != 0):
-                    print('Error occured while generating rosetta energy.\n' +
+                    print('Error occurred while generating rosetta energy.\n' +
                               'Please check the installation')
                     exit()
                         
@@ -540,7 +540,7 @@ class QDeep():
                 #--------for 8A int. map--------#
                 #                               #
                 #-------------------------------#
-                #copy the predicted int.map
+                #copy the predicted int. map
                 if(os.path.exists(output_path + "/int_maps/" + self.target_name + '_8.rr')):
                         os.system('cp ' + output_path + "/int_maps/" + self.target_name + '_8.rr ' + output_path + "/cmo")
                 os.chdir(output_path + "/cmo")
@@ -903,7 +903,7 @@ class QDeep():
                 #---------------for each decoy---------------#
                 #                                            #
                 #--------------------------------------------#
-                #read all deocoys for the taraget
+                #read all decoys for the target
                 self.read_files(decoy_dir)
                 for d in range(len(filesInDir)): #for each decoy
                     outputFeat = open(output_path + "/features/" + filesInDir[d].split('.')[0] + ".feat", "w")
@@ -1396,7 +1396,7 @@ def main():
                 q.sort_scores()
                 if(total_failed_decoy > 0):
                         q.add_failed_decoy()
-                print('\nCongratulations! All process are successfully done!')
+                print('\nCongratulations! All processes are successfully done!')
                 end_time = time.monotonic()
                 total_time = timedelta(seconds=end_time - start_time)
                 print('Total processing time: ' + str(total_time))
