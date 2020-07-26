@@ -98,17 +98,17 @@ A detailed explanation for each of the options are provided below<br/>
 * --pssm PSSM file: You can generate the sequence profile by searching the NR database using PSI-BLAST. You can download the PSI-BLAST from ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/<br/>
 * --spd3 SPIDER3 output: The secondary structure and the solvent accessibility should be predicted using SPIDER3. SPIDER3 can be downloaded from https://sparks-lab.org/downloads/
 * --msa yes|no: This is optional. You should use this flag if you want to use DeepMSA generated MSA. You can download DeepMSA from https://zhanglab.ccmb.med.umich.edu/DeepMSA/. When you use DeepMSA generated MSA, please make sure to, 
-  * generate sequene profile(PSSM) using deep MSA
-  * run SPIDER3 using deep MSA to predict secondary strcture and solvent accessibility 
+  * generate sequence profile(PSSM) using deep MSA
+  * run SPIDER3 using deep MSA to predict secondary structure and solvent accessibility 
   * predict distance using DMPfold using deep MSA
   
 * --gpu Device ID: If you want to use GPU for the prediction, please use this flag and specify the device ID.
 * --out Output path: Please select a location for the output to be stored. It is recommended that you specify a directory name for the output.
 
 ## Data
-1. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/input_data.tar.gz">Download</a> input data for running QDeep with standard and deep alignmnets on both CASP12 and CASP13 datasets.
+1. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/input_data.tar.gz">Download</a> input data for running QDeep with standard and deep alignments on both CASP12 and CASP13 datasets.
 2. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/QDeep_standard.tar.gz">Download</a> QDeep predictions for CASP12 and CASP13 targets using standard alignments.
-3. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/QDeep_deep.tar.gz">Download</a> QDeep predictions for CASP12 and CASP13 taregts using deep alignments.</br>
+3. <a href = "http://sanger.cse.eng.auburn.edu/QDeep/downloads/QDeep_deep.tar.gz">Download</a> QDeep predictions for CASP12 and CASP13 targets using deep alignments.</br>
 Please refer to the <a href="http://sanger.cse.eng.auburn.edu/QDeep/downloads/readme.txt">readme.txt</a> for more information about the file formats.
 
 ## Cite
